@@ -1,4 +1,7 @@
 class Tag < ApplicationRecord
+    #Atributos: title
+    #Relaciones: 
+
     #Define la validación para las etiquetas
     validates :title, length: { minimum: 5 }
 

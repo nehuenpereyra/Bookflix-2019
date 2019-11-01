@@ -21,6 +21,18 @@ puts "Cargar las etiquetas"
 Tag.find_or_create_by(title: "Harry Potter")
 Tag.find_or_create_by(title: "Los juegos del hambre")
 
-
-#Carga de una parte
-#<ActionController::Parameters {"position"=>"0", "normal_release_date"=>"2019-10-02", "premium_release_date"=>"2019-10-11", "pdf"=>#<ActionDispatch::Http::UploadedFile:0x000000000c4f4b18 @tempfile=#<Tempfile:C:/Users/Nehuen/AppData/Local/Temp/RackMultipart20191031-8500-1qcu204.pdf>, @original_filename="11746_3768_1.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"part[pdf]\"; filename=\"11746_3768_1.pdf\"\r\nContent-Type: application/pdf\r\n">} permitted: false>
+puts "Cargar libros"
+Book.find_or_create_by(title: "Juego de Tronos",autor:"George R. R. Martin",
+url_cover:"https://imagessl6.casadellibro.com/a/l/t5/26/9788496208926.jpg",
+description:"Antes de que los Stark viajen al sur, en dirección a Desembarco del Rey (capital de Los Siete Reinos), el hijo de Ned Stark, Bran ve a Cersei Lannister Baratheon, esposa del rey, cometer incesto con su hermano gemelo Jaime Lannister. Este empuja a Bran al vacío desde una torre con la esperanza de ocultar el secreto.",
+expiration_date:"2019-11-14",
+editorial: "Normaal",
+genre_id:2)
+Book.find_or_create_by(title: "El Señor de los Anillos",
+    autor:"J. R. R. Tolkien",
+    url_cover:"https://www.planetadelibros.com/usuaris/libros/fotos/9/m_libros/portada_el-senor-de-los-anillos-i-la-comunidad-del-anillo_j-r-r-tolkien_201505211345.jpg",
+    description:"Frodo Bolsón es un hobbit al que su tío Bilbo hace portador del poderoso Anillo Único, capaz de otorgar un poder ilimitado al que la posea, con la finalidad de destruirlo. Sin embargo, fuerzas malignas muy poderosas quieren arrebatárselo.",
+    editorial: "Mediavales Editorial",
+    expiration_date:"2019-11-14",
+    genre_id:2
+)

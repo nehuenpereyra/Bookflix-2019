@@ -1,18 +1,34 @@
-<%=form_for @part do |f| %>
-  <fieldset disabled>
-    <p>
-      <%= f.label(:position,"Posición") %><br />
-      <%= f.number_field(:position, {:class => 'form-control required'})%>
-    </p>
-    <p>
-      <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
-      <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
-    </p>
-    <p>
-      <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
-      <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
-    </p>
-  </p>
-</fieldset>
-<% end %>
+<h1>Detalle de la parte</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Libro: </th>
+      <td><%= @part.book.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Url Documento: </th>
+      <td><%= @part.url_document %></td>
+    </tr>
+    <tr>
+      <th scope="row">Posición: </th>
+      <td><%= @part.position %></td>
+    </tr>
+    <tr>
+      <th scope="row">Fecha de lanzamiento suscriptor normal: </th>
+      <td><%= @part.normal_release_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Fecha de lanzamiento suscriptor premium: </th>
+      <td><%= @part.premium_release_date %></td>
+    </tr>
+  </tbody>
+</table>
 <%= link_to 'Regresar', parts_path %>

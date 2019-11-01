@@ -11,17 +11,20 @@
     </div>
   <% end %>
   <p>
-    <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
-    <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
+    <%= f.label(:book_id,"Libro") %><br />
+    <%= f.select(:book_id, options_for_select(@books.map{ |book| [book.title,book.id] }), {:class => 'custom-select'}) %>
   </p>
   <p>
-    <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
-    <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
+    <%= f.label(:url_document,"Url del documento") %><br />
+    <%= f.text_field(:url_document, {:class => 'form-control'})%>
   </p>
-  <p>
-    <%= f.label(:pdf,"Cargar pdf") %><br />
-    <%= f.file_field(:pdf, {:class => 'form-control-file'}) %>
-  </p>
-  <%= f.submit({:class => 'btn btn-primary'}) %>
+  <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
+  <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
+</p>
+<p>
+  <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
+  <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
+</p>
+<%= f.submit({:class => 'btn btn-primary'}) %>
 </p>
 <% end %>

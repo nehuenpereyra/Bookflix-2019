@@ -1,11 +1,14 @@
 class BooksController < ApplicationController
     def new
         @book = Book.new
+        @genres = Genre.all
+        @tags = Tag.all
     end
 
     def create
         #render plain: params[:book].inspect
-        
+        @genres = Genre.all
+        @tags = Tag.all
         @book = Book.new(book_params)
         if @book.save
             redirect_to @book
@@ -16,6 +19,7 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find(params[:id])
+        
     end
 
     def index
@@ -23,10 +27,12 @@ class BooksController < ApplicationController
     end
 
     def edit
+        @genres = Genre.all
         @book = Book.find(params[:id])
     end
 
     def update
+        @genres = Genre.all
         @book = Book.find(params[:id])
         if @book.update(book_params)
         redirect_to @book
@@ -43,6 +49,6 @@ class BooksController < ApplicationController
 
     private
     def book_params
-        params.require(:book).permit(:title, :description, :expiration_date, :url_cover)
+        params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :autor, :editorial, :genre_id)
     end
 end

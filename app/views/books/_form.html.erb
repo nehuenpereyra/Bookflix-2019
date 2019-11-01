@@ -2,7 +2,7 @@
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %></h2>
-      No se pudo guardar el género por:
+      No se pudo guardar el libro por:
       <ul>
         <% @book.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -11,29 +11,33 @@
     </div>
   <% end %>
   <p>
-        <%= f.label :titulo %><br />
-        <%= f.text_field(:title, {:class => 'form-control'}) %>
-      </p>
-      <p>
-        <%= f.label :autor %><br />
-        <%= f.text_field(:autor, {:class => 'form-control'}) %>
-      </p>
-      <p>
-        <%= f.label(:imagen,'Url portada') %><br />
-        <%= f.text_field(:url_cover, {:class => 'form-control'}) %>
-      </p>
-      <p>
-        <%= f.label(:description,"Descripción") %><br />
-        <%= f.text_area(:description, {:class => 'form-control'}) %>
-      </p>
-      <p>
-        <%= f.label(:fecha_vencimiento,"Fecha de vencimiento") %><br />
-        <%= f.date_field(:expiration_date, {:class => 'form-control'}) %>
-      </p>
-      <p>
-        <%= f.label :editorial %><br />
-        <%= f.text_field(:editorial, {:class => 'form-control'}) %>
-      </p>
+    <%= f.label :titulo %><br />
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label :autor %><br />
+    <%= f.text_field(:autor, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label(:imagen,'Url portada') %><br />
+    <%= f.text_field(:url_cover, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label(:genre_id,"Género") %><br />
+    <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] }), {:class => 'custom-select'}) %>
+  </p>
+  <p>
+    <%= f.label(:description,"Descripción") %><br />
+    <%= f.text_area(:description, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label(:fecha_vencimiento,"Fecha de vencimiento") %><br />
+    <%= f.date_field(:expiration_date, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label :editorial %><br />
+    <%= f.text_field(:editorial, {:class => 'form-control'}) %>
+  </p>
   <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>
 <% end %>

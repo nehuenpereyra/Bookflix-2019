@@ -11,6 +11,10 @@
     </div>
   <% end %>
   <p>
+    <%= f.label(:book_id,"Libro") %><br />
+    <%= f.select(:book_id, options_for_select(@books.map{ |book| [book.title,book.id] }), {:class => 'custom-select'}) %>
+  </p>
+  <p>
     <%= f.label(:pdf,"Url del documento") %><br />
     <%= f.text_field(:url_document, {:class => 'form-control'})%>
   </p>

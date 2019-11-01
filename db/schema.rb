@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_132644) do
+ActiveRecord::Schema.define(version: 2019_11_01_213701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(version: 2019_11_01_132644) do
     t.string "autor"
     t.string "url_cover"
     t.string "editorial"
+    t.integer "genre_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "book_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_132644) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "url_document"
+    t.integer "book_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -73,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_11_01_132644) do
     t.date "premium_release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "book_id"
+    t.string "url_document"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

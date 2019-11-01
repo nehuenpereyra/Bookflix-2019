@@ -1,11 +1,12 @@
 class TrailersController < ApplicationController
     def new
         @trailer = Trailer.new
+        @books = Book.all
     end
 
     def create
         #render plain: params[:trailer].inspect
-        
+        @books = Book.all
         @trailer = Trailer.new(trailer_params)
         if @trailer.save
             redirect_to @trailer
@@ -23,10 +24,12 @@ class TrailersController < ApplicationController
     end
 
     def edit
+        @books = Book.all
         @trailer = Trailer.find(params[:id])
     end
 
     def update
+        @books = Book.all
         @trailer = Trailer.find(params[:id])
         if @trailer.update(trailer_params)
         redirect_to @trailer
@@ -43,6 +46,6 @@ class TrailersController < ApplicationController
 
     private
     def trailer_params
-        params.require(:trailer).permit(:document, :normal_release_date, :premium_release_date)
+        params.require(:trailer).permit(:url_document, :normal_release_date, :premium_release_date, :book_id)
     end
 end
