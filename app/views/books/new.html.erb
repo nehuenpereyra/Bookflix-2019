@@ -1,0 +1,42 @@
+<h1>Nuevo Libro</h1>
+<%-# Rails infiere gracias api Rest que se quiere hacer agregar/editar -%>
+<%=form_for :book, url: books_path do |f| %>
+  <hr/>
+  <p style="text-align: center">Datos de un Libro
+    <p>
+      <p>
+        <%= f.label :titulo %><br />
+        <%= f.text_field(:title, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label :autor %><br />
+        <%= f.text_field(:autor, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label :imagen %><br />
+        <%= f.file_field(:image, {:class => 'form-control-file'}) %>
+      </p>
+      <p>
+        <%= f.label(:descripcion,"Descripción") %><br />
+        <%= f.text_area(:descripcion, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label(:fecha_vencimiento,"Fecha de vencimiento") %><br />
+        <%= f.date_field(:fecha_vencimiento, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label :editorial %><br />
+        <%= f.text_field(:editorial, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label(:genero,'Género') %><br />
+        <%= f.text_field(:genero, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.label :etiqueta %><br />
+        <%= f.text_field(:etiqueta, {:class => 'form-control'}) %>
+      </p>
+      <p>
+        <%= f.submit({:class => 'btn btn-primary'}) %>
+      </p>
+    <% end %>

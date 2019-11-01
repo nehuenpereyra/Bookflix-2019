@@ -1,0 +1,27 @@
+<%=form_for @trailer do |f| %>
+  <% if @trailer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trailer.errors.count, "error") %></h2>
+      No se pudo guardar el trailer por:
+      <ul>
+        <% @trailer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
+    <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
+    <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.label(:pdf,"Cargar pdf") %><br />
+    <%= f.file_field(:pdf, {:class => 'form-control-file'}) %>
+  </p>
+  <%= f.submit({:class => 'btn btn-primary'}) %>
+</p>
+<% end %>
