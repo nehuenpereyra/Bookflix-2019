@@ -1,0 +1,28 @@
+<h1>Listado de Partes</h1>
+<%= link_to 'Agregar parte', new_part_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.id %></td>
+        <td>
+          <button type="button" class="btn btn-primary">
+            <%= link_to 'Ver', part_path(part), {:style=>'color: inherit;'}%>
+          </button>
+          <button type="button" class="btn btn-success">
+            <%= link_to 'Editar', edit_part_path(part), {:style=>'color: inherit;'} %>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <%= link_to 'Borrar', part_path(part), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

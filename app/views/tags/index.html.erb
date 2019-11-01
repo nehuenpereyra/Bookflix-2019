@@ -1,0 +1,28 @@
+<h1>Listado de Etiquetas</h1>
+<%= link_to 'Agregar etiqueta', new_tag_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Etiqueta</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.title %></td>
+        <td>
+          <button type="button" class="btn btn-primary">
+            <%= link_to 'Ver', tag_path(tag), {:style=>'color: inherit;'}%>
+          </button>
+          <button type="button" class="btn btn-success">
+            <%= link_to 'Editar', edit_tag_path(tag), {:style=>'color: inherit;'} %>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <%= link_to 'Borrar', tag_path(tag), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

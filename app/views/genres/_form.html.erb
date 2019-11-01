@@ -1,0 +1,19 @@
+<%=form_for @genre do |f| %>
+  <% if @genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genre.errors.count, "error") %></h2>
+      No se pudo guardar el género por:
+      <ul>
+        <% @genre.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :titulo %><br />
+    <%= f.text_field(:title, {:class => 'form-control'})%>
+  </p>
+  <%= f.submit({:class => 'btn btn-primary'}) %>
+</p>
+<% end %>
