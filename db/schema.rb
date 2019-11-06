@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_10_31_233707) do
-=======
 ActiveRecord::Schema.define(version: 2019_11_06_172627) do
->>>>>>> rama_suscriptores
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +42,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.string "autor"
     t.string "url_cover"
     t.string "editorial"
@@ -60,17 +54,13 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
->>>>>>> rama_suscriptores
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.integer "book_id"
->>>>>>> rama_suscriptores
   end
 
   create_table "parts", force: :cascade do |t|
@@ -79,8 +69,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.date "premium_release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.string "url_document"
     t.integer "book_id"
   end
@@ -97,7 +85,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_subscribers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_subscribers_on_reset_password_token", unique: true
->>>>>>> rama_suscriptores
   end
 
   create_table "tags", force: :cascade do |t|
@@ -111,11 +98,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.date "premium_release_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
     t.integer "book_id"
     t.string "url_document"
->>>>>>> rama_suscriptores
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
