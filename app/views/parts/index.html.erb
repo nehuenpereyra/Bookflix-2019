@@ -3,14 +3,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Libro</th>
+      <th scope="col">Parte del libro</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <% @parts.each do |part| %>
       <tr>
-        <td><%= part.id %></td>
+        <td><%= part.book.title %></td>
+        <td><%= part.position %></td>
         <td>
           <button type="button" class="btn btn-primary">
             <%= link_to 'Ver', part_path(part), {:style=>'color: inherit;'}%>

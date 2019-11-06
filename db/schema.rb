@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "administrators", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_administrators_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -54,6 +66,14 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "visibility"
+  end
+
+  create_table "books_tags", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "tag_id"
+    t.index ["book_id"], name: "index_books_tags_on_book_id"
+    t.index ["tag_id"], name: "index_books_tags_on_tag_id"
   end
 
   create_table "genres", force: :cascade do |t|

@@ -1,14 +1,30 @@
-<%=form_for @trailer do |f| %>
-  <fieldset disabled>
-    <p>
-      <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
-      <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
-    </p>
-    <p>
-      <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
-      <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
-    </p>
-  </p>
-</fieldset>
-<% end %>
-<%= link_to 'Regresar', trailers_path %>
+<h1>Detalle del Trailer</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Libro: </th>
+      <td><%= @trailer.book.title %></td>
+    </tr>
+    <tr>
+      <th scope="row">Url Documento: </th>
+      <td><%= @trailer.url_document %></td>
+    </tr>
+    <tr>
+      <th scope="row">Fecha de lanzamiento suscriptor normal: </th>
+      <td><%= @trailer.normal_release_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Fecha de lanzamiento suscriptor premium: </th>
+      <td><%= @trailer.premium_release_date %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Regresar', url_for(:back) %>

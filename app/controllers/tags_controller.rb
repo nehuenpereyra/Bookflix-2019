@@ -1,4 +1,7 @@
 class TagsController < ApplicationController
+
+    before_action :authenticate_administrator!
+
     def new
         @tag = Tag.new
     end
