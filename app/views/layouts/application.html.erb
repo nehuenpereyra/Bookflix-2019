@@ -20,7 +20,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Bookflix</a>
+      <a class="navbar-brand" href="/">Bookflix</a>
   
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -31,12 +31,59 @@
             <a class="nav-link" href="#">Agregar</a>
           </li>
         </ul>
+
+
+
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <% if subscriber_signed_in? %>
+              <li class="nav-item active">
+                <%= link_to "Cerrar sesion", destroy_subscriber_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+              <li class="nav-item active">  
+                  <%= link_to "Configuracion", edit_subscriber_registration_path, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <%= link_to "Iniciar sesion", new_subscriber_session_path, {:class => 'nav-link'}%>
+            <% end %>
+          </li> 
+        </ul>
+
+
+
+
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
       </div>
     </nav>
+    
+
+
+
+
+    <% unless notice.nil? %>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Mensaje</strong>
+        <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+    <% unless alert.nil? %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Alerta</strong>
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+
 
     <div class="container">
       <%= yield %>

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< HEAD
 puts "Cargar los Géneros"
 Genre.find_or_create_by(title: "aventuras")
 Genre.find_or_create_by(title: "fantástica")
@@ -24,3 +25,9 @@ Tag.find_or_create_by(title: "Los juegos del hambre")
 
 #Carga de una parte
 #<ActionController::Parameters {"position"=>"0", "normal_release_date"=>"2019-10-02", "premium_release_date"=>"2019-10-11", "pdf"=>#<ActionDispatch::Http::UploadedFile:0x000000000c4f4b18 @tempfile=#<Tempfile:C:/Users/Nehuen/AppData/Local/Temp/RackMultipart20191031-8500-1qcu204.pdf>, @original_filename="11746_3768_1.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"part[pdf]\"; filename=\"11746_3768_1.pdf\"\r\nContent-Type: application/pdf\r\n">} permitted: false>
+=======
+puts "Crear los Suscriptores"
+if !Subscriber.exists?(email: "jeansoft@hotmail.com")
+    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft")
+end
+>>>>>>> rama_suscriptores
