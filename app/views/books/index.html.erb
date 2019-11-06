@@ -6,8 +6,8 @@
   <% @books.each do |book| %>
     <% if book.visibility %>
       <div class="card align-items-center" style="padding:10px;border: none;" >
-        <div style="width:200px; height:300">
-          <img src=<%=book.url_cover%> class="card-img-top" alt=<%=book.title%>>
+        <div style="width:200px; height:300;">
+          <img src=<%=book.url_cover%> class="card-img-top" alt=<%=book.title%> style="width:200px; height:auto;">
         </div>
         <div class="card-body">
           <h5 class="card-title">

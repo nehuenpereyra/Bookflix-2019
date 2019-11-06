@@ -38,6 +38,15 @@
     <%= f.label :editorial %><br />
     <%= f.text_field(:editorial, {:class => 'form-control'}) %>
   </p>
+  <p>
+    <%= f.label(:tag_ids,"Etiquetas") %><br />
+     <div class="overflow-auto" style="width:400px;height:200px;">
+      <ul class="list-group">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title, { include_hidden: false }) %>
+      </ul>
+    </div>
+    
+  </p>
   <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>
 <% end %>

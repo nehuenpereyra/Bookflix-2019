@@ -20,6 +20,13 @@
           <% end %>
         </ul>
         <p class="card-text"><a href=<%= (@book.trailer==nil)? "" : @book.trailer.url_document%>>Trailer</a></p>
+        <ul class="list-group">
+          <% @book.tags.each do |tag| %>
+            <li class="list-group-item">
+              <a href=''><%= tag.title%></a>
+            </li>
+          <% end %>
+        </ul>
         <p class="card-text"><small class="text-muted">Fecha vencimiento <%= @book.expiration_date %></small></p>
       </div>
     </div>

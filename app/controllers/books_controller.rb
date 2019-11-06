@@ -9,7 +9,8 @@ class BooksController < ApplicationController
     end
 
     def create
-        #render plain: params[:book].inspect
+        #render plain: params[:book]
+        #render plain: book_params
         @genres = Genre.all
         @tags = Tag.all
         @book = Book.new(book_params)
@@ -53,7 +54,7 @@ class BooksController < ApplicationController
 
     private
     def book_params
-        params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :autor, :editorial, :genre_id)
+        params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :autor, :editorial, :genre_id, :tag_ids => [])
     end
     
 end

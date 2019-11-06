@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_014917) do
+ActiveRecord::Schema.define(version: 2019_11_06_125835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(version: 2019_11_06_014917) do
     t.string "editorial"
     t.integer "genre_id"
     t.boolean "visibility"
+  end
+
+  create_table "books_tags", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "tag_id"
+    t.index ["book_id"], name: "index_books_tags_on_book_id"
+    t.index ["tag_id"], name: "index_books_tags_on_tag_id"
   end
 
   create_table "genres", force: :cascade do |t|
