@@ -1,4 +1,7 @@
 class PartsController < ApplicationController
+
+    before_action :authenticate_administrator!
+
     def new
         @part = Part.new
         @books = Book.all

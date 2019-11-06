@@ -1,4 +1,7 @@
 class TrailersController < ApplicationController
+    
+    before_action :authenticate_administrator!
+    
     def new
         @trailer = Trailer.new
         @books = Book.all

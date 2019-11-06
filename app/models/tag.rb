@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
     #Atributos: title
-    #Relaciones: 
+    #Relaciones: books
+
+    has_and_belongs_to_many :books
 
     #Define la validación para las etiquetas
     validates :title, length: { minimum: 5 }

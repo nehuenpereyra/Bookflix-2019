@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+    
+    before_action :authenticate_administrator!, except: [:index, :show]
+    
     def new
         @book = Book.new
         @genres = Genre.all
@@ -10,6 +13,7 @@ class BooksController < ApplicationController
         @genres = Genre.all
         @tags = Tag.all
         @book = Book.new(book_params)
+        @book.visibility = true
         if @book.save
             redirect_to @book
         else
@@ -19,7 +23,6 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find(params[:id])
-        
     end
 
     def index
@@ -43,7 +46,8 @@ class BooksController < ApplicationController
 
     def destroy
         @book = Book.find(params[:id])
-        @book.destroy
+        #@book.destroy
+        @book.update_attribute(:visibility,false)
         redirect_to books_path
     end
 
@@ -51,4 +55,5 @@ class BooksController < ApplicationController
     def book_params
         params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :autor, :editorial, :genre_id)
     end
+    
 end

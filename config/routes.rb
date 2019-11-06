@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :administrators
   resources :books 
   resources :genres
   resources :tags
