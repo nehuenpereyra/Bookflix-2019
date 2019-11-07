@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.string "url_cover"
     t.string "editorial"
     t.integer "genre_id"
+    t.boolean "visibility"
+  end
+
+  create_table "books_tags", id: false, force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "tag_id"
+    t.index ["book_id"], name: "index_books_tags_on_book_id"
+    t.index ["tag_id"], name: "index_books_tags_on_tag_id"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -67,13 +75,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_172627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "visibility"
-  end
-
-  create_table "books_tags", id: false, force: :cascade do |t|
-    t.bigint "book_id"
-    t.bigint "tag_id"
-    t.index ["book_id"], name: "index_books_tags_on_book_id"
-    t.index ["tag_id"], name: "index_books_tags_on_tag_id"
   end
 
   create_table "genres", force: :cascade do |t|
