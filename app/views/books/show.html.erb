@@ -1,35 +1,42 @@
-<h1>Detalle del libro</h1>
-<div class="card mb-3" style="margin: 10px;" >
+<div class="card mb-3" style="margin-top: 20px;" >
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src=<%= @book.url_cover %> class="card-img" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><%= @book.title %></h5>
-        <p class="card-text">Descripción: <br>
-          <%= @book.description %></p>
+        <div class="row" style="justify-content:space-between;margin:5px;">
+          <h5 class="card-title"><%= @book.title %></h5>
+          <% if (@book.trailer!=nil) %>
+            <a class="btn btn-warning" href=<%= request.protocol+request.host_with_port+'/trailers/'+@book.trailer.id.to_s %>>Trailer</a>
+          <% end %>
+        </div>
+        <p class="card-text"><%= @book.description %></p>
         <p class="card-text">Autor: <%= @book.autor %></p>
         <p class="card-text">Editorial: <%= @book.editorial %></p>
-        <p class="card-text">Género: <%= @book.genre.title %></p>
-        <ul class="list-group">
-          <% @book.parts.each do |part| %>
-            <li class="list-group-item">
-              <a href=<%= part.url_document%>>Parte: <%= part.position%></a>
-            </li>
-          <% end %>
-        </ul>
-        <p class="card-text"><a href=<%= (@book.trailer==nil)? "" : @book.trailer.url_document%>>Trailer</a></p>
-        <ul class="list-group">
+        <div style="display:inline;">
+          <p class="card-text">Género:</p>
+          <a class="btn btn-primary" href=<%= request.protocol+request.host_with_port+'/genres/'+@book.genre.id.to_s %> role="button" style="margin-left:10px;"><%= @book.genre.title%></a>
+        </div>
+        <p class="card-text"><%= (@book.tags.length!=0)? "Etiquetas Relacionadas:": "" %></p>
+        <div >
           <% @book.tags.each do |tag| %>
-            <li class="list-group-item">
-              <a href=''><%= tag.title%></a>
-            </li>
+            <a class="btn btn-primary" href=<%= request.protocol+request.host_with_port+'/tags/'+tag.id.to_s %> role="button" style="margin-left:10px;"><%= tag.title%></a>
           <% end %>
-        </ul>
-        <p class="card-text"><small class="text-muted">Fecha vencimiento <%= @book.expiration_date %></small></p>
+        </div>
+        <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date %></footer>
       </div>
     </div>
   </div>
 </div>
+<% if @book.parts.size > 0%>
+  <h5>Capítulos del libro:</h5>
+<% end %>
+<ul class="list-group">
+  <% @book.parts.each do |part| %>
+    <li class="list-group-item">
+      <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Capítulo: <%= part.position%></a>
+    </li>
+  <% end %>
+</ul>
 <%= link_to 'Regresar', url_for(:back) %>

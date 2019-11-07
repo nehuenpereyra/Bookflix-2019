@@ -1,6 +1,7 @@
 class GenresController < ApplicationController
     
-    before_action :authenticate_administrator!
+    before_action :authenticate_administrator! , except: [:show]
+    before_action :authenticate_subscriber!
 
     def new
         @genre = Genre.new
@@ -18,6 +19,7 @@ class GenresController < ApplicationController
 
     def show
         @genre = Genre.find(params[:id])
+        @books = @genre.books
     end
 
     def index

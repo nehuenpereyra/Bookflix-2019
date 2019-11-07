@@ -1,6 +1,7 @@
 class TrailersController < ApplicationController
     
-    before_action :authenticate_administrator!
+    before_action :authenticate_administrator! , except: [:show]
+    before_action :authenticate_subscriber!
     
     def new
         @trailer = Trailer.new

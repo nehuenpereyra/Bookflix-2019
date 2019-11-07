@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
 
-    before_action :authenticate_administrator!
+    before_action :authenticate_administrator! , except: [:show]
+    before_action :authenticate_subscriber!
 
     def new
         @tag = Tag.new
@@ -17,6 +18,7 @@ class TagsController < ApplicationController
 
     def show
         @tag = Tag.find(params[:id])
+        @books = @tag.books
     end
 
     def index
@@ -39,7 +41,7 @@ class TagsController < ApplicationController
     def destroy
         @tag = Tag.find(params[:id])
         @tag.destroy
-        redirect_to tag_path
+        redirect_to tags_path
     end
 
     private
