@@ -15,12 +15,32 @@
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
+
+
+
+        <div class="field">
+          <%= f.label :Numero_de_tarjeta %><br />
+          <%= f.number_field(:card_number, {:class => 'form-control', required: true}) %>
+        </div>
+
+        <div class="field"> 
+          <%= f.label :fecha_de_vencimiento %><br />
+          <%= f.date_field(:expiration_date, {:class => 'form-control'}) %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Codigo_de_verificacion %><br />
+          <%= f.number_field(:card_key, {:class => 'form-control', :placeholder => "CVC"}) %>
+        </div>        
+
+
+
         <div class="field">
           <%= f.label :Nueva_contraseña %>
           <%= f.password_field(:password, {:class => 'form-control', :autocomplete=> "Dejar en blanco si no desea modificar"})  %>
         </div>
         <small id="passwordHelpBlock" class="form-text text-muted">
-          Su contraseña debe tener entre 6 y 12 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales o emoji.
+          Su contraseña debe tener entre 6 y 12 caracteres, contener letras y números.
         </small>
         <div class="field">
           <%= f.label :Confirmar_contraseña %><br />

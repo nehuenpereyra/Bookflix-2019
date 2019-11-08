@@ -23,6 +23,7 @@ class DeviseCreateSubscribers < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :last_name
 
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

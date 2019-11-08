@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   resources :tags
   resources :parts
   resources :trailers
-
   devise_for :subscribers
+
   #Defino la ruta principal de la página
   root 'home#index'
-  get '/pregunta ', to: 'informations#pregunta'
+  get '/preguntas_frecuentes', to: 'informations#pregunta'
   get '/contacto', to: 'informations#contacto'
   get '/condicion', to: 'informations#condicion'
 end

@@ -11,6 +11,11 @@ if !Administrator.exists?(email: "admin@admin.com")
     Administrator.create!(email: "admin@admin.com", password: "admin123")
 end
 
+puts "Crear los Suscriptores"
+if !Subscriber.exists?(email: "jeansoft@hotmail.com")
+    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft", card_number: "4000123400102727", expiration_date: "2019-11-14",card_key: "123")
+end
+
 puts "Cargar los Géneros"
 Genre.find_or_create_by(title: "aventuras")
 Genre.find_or_create_by(title: "fantástica")
@@ -29,11 +34,6 @@ Tag.find_or_create_by(title: "Los juegos del hambre")
 
 #Carga de una parte
 #<ActionController::Parameters {"position"=>"0", "normal_release_date"=>"2019-10-02", "premium_release_date"=>"2019-10-11", "pdf"=>#<ActionDispatch::Http::UploadedFile:0x000000000c4f4b18 @tempfile=#<Tempfile:C:/Users/Nehuen/AppData/Local/Temp/RackMultipart20191031-8500-1qcu204.pdf>, @original_filename="11746_3768_1.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"part[pdf]\"; filename=\"11746_3768_1.pdf\"\r\nContent-Type: application/pdf\r\n">} permitted: false>
-puts "Crear los Suscriptores"
-if !Subscriber.exists?(email: "jeansoft@hotmail.com")
-    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft")
-end
-
 
 puts "Cargar libros"
 Book.find_or_create_by(title: "Juego de Tronos",autor:"George R. R. Martin",
