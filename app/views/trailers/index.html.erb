@@ -3,22 +3,22 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Trailer</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <% @trailers.each do |trailer| %>
       <tr>
-        <td><%= trailer.id %></td>
+        <td><%= trailer.book.title %></td>
         <td>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Ver', trailer_path(trailer), {:style=>'color: inherit;'}%>
           </button>
-          <button type="button" class="btn btn-success">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Editar', edit_trailer_path(trailer), {:style=>'color: inherit;'} %>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Borrar', trailer_path(trailer), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
           </button>
         </td>

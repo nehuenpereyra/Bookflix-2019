@@ -14,13 +14,13 @@
           <p class="card-text"><%= book.autor %></p>
           <div class="btn-group" role="group" aria-label="Basic example">
             <% if administrator_signed_in? %>
-              <button type="button" class="btn btn-primary">
+              <button type="button" class="btn btn-dark">
                 <%= link_to 'Ver', book_path(book), {:style=>'color: inherit;'}%>
               </button>
-              <button type="button" class="btn btn-success">
+              <button type="button" class="btn btn-dark">
                 <%= link_to 'Editar', edit_book_path(book), {:style=>'color: inherit;'} %>
               </button>
-              <button type="button" class="btn btn-danger">
+              <button type="button" class="btn btn-dark">
                 <%= link_to 'Borrar', book_path(book), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
               </button>
             <% end %>

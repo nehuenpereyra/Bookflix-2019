@@ -140,6 +140,6 @@ Trailer.find_or_create_by(book_id:1,
     normal_release_date: "2019-11-30",
     premium_release_date: "2019-11-30")
 Trailer.find_or_create_by(book_id:3,
-    url_document: "http://losjuegosdelhambre.com/wp-content/pdf/Losjuegosdelhambre-1.pdf",
+    url_document: "https://grannyswag.files.wordpress.com/2015/06/1-the-hunger-games.pdf",
     normal_release_date: "2019-11-30",
     premium_release_date: "2019-11-30")

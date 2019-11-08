@@ -16,12 +16,12 @@
         <p class="card-text">Editorial: <%= @book.editorial %></p>
         <div style="display:inline;">
           <p class="card-text">Género:</p>
-          <a class="btn btn-primary" href=<%= request.protocol+request.host_with_port+'/genres/'+@book.genre.id.to_s %> role="button" style="margin-left:10px;"><%= @book.genre.title%></a>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/genres/'+@book.genre.id.to_s %> role="button" style="margin-left:10px;"><%= @book.genre.title%></a>
         </div>
         <p class="card-text"><%= (@book.tags.length!=0)? "Etiquetas Relacionadas:": "" %></p>
         <div >
           <% @book.tags.each do |tag| %>
-            <a class="btn btn-primary" href=<%= request.protocol+request.host_with_port+'/tags/'+tag.id.to_s %> role="button" style="margin-left:10px;"><%= tag.title%></a>
+            <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/tags/'+tag.id.to_s %> role="button" style="margin-left:10px;"><%= tag.title%></a>
           <% end %>
         </div>
         <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date %></footer>

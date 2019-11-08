@@ -14,13 +14,13 @@
         <td><%= part.book.title %></td>
         <td><%= part.position %></td>
         <td>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Ver', part_path(part), {:style=>'color: inherit;'}%>
           </button>
-          <button type="button" class="btn btn-success">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Editar', edit_part_path(part), {:style=>'color: inherit;'} %>
           </button>
-          <button type="button" class="btn btn-danger">
+          <button type="button" class="btn btn-dark">
             <%= link_to 'Borrar', part_path(part), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
           </button>
         </td>
