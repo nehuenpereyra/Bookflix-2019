@@ -1,4 +1,7 @@
 <% if subscriber_signed_in? || administrator_signed_in? %>
   <%= render :template => 'books/index', :collection => @books%>
-<% end %>
-<td>
+<% else %>
+  <div class="text-center">
+    <h3>Bienvenido a Bookflix!</h3>
+  </div>
+<% end%>

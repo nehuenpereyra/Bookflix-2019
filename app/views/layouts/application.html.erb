@@ -13,11 +13,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #282828;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="/">Bookflix</a>
+      <a class="navbar-brand" href="/"><img src="https://gitlab.com/nehuen94/fuentes/raw/633374e5334706dc1b3dc1aa6f975cd30ec99d47/bookflix.png" style="width:150px;heigth:auto;"></a>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
@@ -69,13 +69,25 @@
         </button>
       </div>
     <% end %>
-    <div class="container">
-      <!-- Footer -->
+    <div class="container" style="min-height: 100vh;">
       <%= yield %>
-      <footer class="page-footer font-small blue pt-4">
-        <%= link_to 'Pregunta frecuentes', '/preguntas_frecuentes' %>
-        <%= link_to 'Contacto', '/contacto' %>
-        <%= link_to 'Condiciones de uso', '/condicion' %>
-      </footer>
-    </body>
-  </html>
+    </div>
+    <footer>
+      <nav class="navbar navbar-expand-lg navbar-dark  justify-content-center " style="background-color: #282828;">
+        <ul class="navbar-nav ">
+          <li class="nav-item active ">
+            <li class="nav-item active">
+              <%= link_to 'Pregunta frecuentes', '/preguntas_frecuentes', class: 'nav-link' %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Contacto', '/contacto', class: 'nav-link' %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Condiciones de uso', '/condicion', class: 'nav-link' %>
+            </li>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>
