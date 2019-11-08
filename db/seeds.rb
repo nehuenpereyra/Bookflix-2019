@@ -13,7 +13,7 @@ end
 
 puts "Crear los Suscriptores"
 if !Subscriber.exists?(email: "jeansoft@hotmail.com")
-    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft", card_number: "4000123400102727", expiration_date: "2019-11-14",card_key: "123")
+    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft", card_number: "4536000123456789", expiration_date: "2019-11-14",card_key: "123")
 end
 
 puts "Cargar los Géneros"

@@ -9,10 +9,10 @@ class Subscriber < ApplicationRecord
          validates :name, length: {minimum: 4 }
          validates :last_name, uniqueness: true
          validates :email, length: {minimum: 5 }, presence: true, format: {with:VALID_EMAIL_REGEX}
-         validates :password, length: {minimum: 6 }, length: {maximum: 12}
+         validates :password, length: {minimum: 6, maximum: 12 }
 
-         validates :card_number, uniqueness: true
-         validates :card_key, length: {minimum: 3}, length: {maximum: 3}
+         validates :card_number, uniqueness: true, length: {minimum: 16, maximum: 16 }
+         validates :card_key , presence: true
          
          validate :date_validation
          private 
