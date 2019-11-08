@@ -1,34 +1,37 @@
-<h1>Detalle de la parte</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Libro: </th>
-      <td><%= @part.book.title %></td>
-    </tr>
-    <tr>
-      <th scope="row">Url Documento: </th>
-      <td><%= @part.url_document %></td>
-    </tr>
-    <tr>
-      <th scope="row">Posición: </th>
-      <td><%= @part.position %></td>
-    </tr>
-    <tr>
-      <th scope="row">Fecha de lanzamiento suscriptor normal: </th>
-      <td><%= @part.normal_release_date %></td>
-    </tr>
-    <tr>
-      <th scope="row">Fecha de lanzamiento suscriptor premium: </th>
-      <td><%= @part.premium_release_date %></td>
-    </tr>
-  </tbody>
-</table>
+<% if administrator_signed_in? %>
+  <h1>Detalle de la parte</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Libro: </th>
+        <td><%= @part.book.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Url Documento: </th>
+        <td><%= @part.url_document %></td>
+      </tr>
+      <tr>
+        <th scope="row">Posición: </th>
+        <td><%= @part.position %></td>
+      </tr>
+      <tr>
+        <th scope="row">Fecha de lanzamiento suscriptor normal: </th>
+        <td><%= @part.normal_release_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">Fecha de lanzamiento suscriptor premium: </th>
+        <td><%= @part.premium_release_date %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+<embed src=<%=  @part.url_document+'#toolbar=0' %> type="application/pdf" width="100%" height="1000" style="margin:10px;">
 <%= link_to 'Regresar', url_for(:back) %>

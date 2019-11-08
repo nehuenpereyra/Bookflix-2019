@@ -12,5 +12,10 @@ end
 def condicion
 	
 end
+
+def admin_panel
+
+end
+
 end
 

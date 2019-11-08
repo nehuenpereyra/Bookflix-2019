@@ -12,7 +12,7 @@
   <% end %>
   <p>
     <%= f.label :titulo %><br />
-    <%= f.text_field(:title, {:class => 'form-control'})%>
+    <%= f.text_field(:title, {:class => 'form-control', :required => true})%>
   </p>
   <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>

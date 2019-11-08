@@ -1,6 +1,5 @@
-<h1>Detalle de la etiqueta</h1>
-<p>
-  <strong>Titulo:</strong>
-  <%= @tag.title %>
-</p>
-<%= link_to 'Regresar', url_for(:back) %>
+<div style="margin-top:20px">
+  <h5>Etiquetas: <%= @tag.title %></h5>
+  <%= render :template => 'books/index', :collection => @books%>
+  <%= link_to 'Regresar', url_for(:back) %>
+</div>

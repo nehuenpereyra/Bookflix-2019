@@ -12,15 +12,15 @@
   <% end %>
   <p>
     <%= f.label :titulo %><br />
-    <%= f.text_field(:title, {:class => 'form-control'}) %>
+    <%= f.text_field(:title, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label :autor %><br />
-    <%= f.text_field(:autor, {:class => 'form-control'}) %>
+    <%= f.text_field(:autor, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label(:imagen,'Url portada') %><br />
-    <%= f.text_field(:url_cover, {:class => 'form-control'}) %>
+    <%= f.text_field(:url_cover, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label(:genre_id,"Género") %><br />
@@ -28,24 +28,23 @@
   </p>
   <p>
     <%= f.label(:description,"Descripción") %><br />
-    <%= f.text_area(:description, {:class => 'form-control'}) %>
+    <%= f.text_area(:description, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label(:fecha_vencimiento,"Fecha de vencimiento") %><br />
-    <%= f.date_field(:expiration_date, {:class => 'form-control'}) %>
+    <%= f.date_field(:expiration_date, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label :editorial %><br />
-    <%= f.text_field(:editorial, {:class => 'form-control'}) %>
+    <%= f.text_field(:editorial, {:class => 'form-control', :required => true}) %>
   </p>
   <p>
     <%= f.label(:tag_ids,"Etiquetas") %><br />
-     <div class="overflow-auto" style="width:400px;height:200px;">
+    <div class="overflow-auto" style="width:400px;height:200px;">
       <ul class="list-group">
-      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title, { include_hidden: false }) %>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title, { include_hidden: false }) %>
       </ul>
     </div>
-    
   </p>
   <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>

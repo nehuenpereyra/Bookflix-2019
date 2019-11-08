@@ -16,14 +16,14 @@
   </p>
   <p>
     <%= f.label(:url_document,"Url del documento") %><br />
-    <%= f.text_field(:url_document, {:class => 'form-control'})%>
+    <%= f.text_field(:url_document, {:class => 'form-control', :required => true})%>
   </p>
   <%= f.label(:normal_release_date,"Fecha de lanzamiento suscriptor normal") %><br />
-  <%= f.date_field(:normal_release_date, {:class => 'form-control'}) %>
+  <%= f.date_field(:normal_release_date, {:class => 'form-control', :required => true}) %>
 </p>
 <p>
   <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
-  <%= f.date_field(:premium_release_date, {:class => 'form-control'}) %>
+  <%= f.date_field(:premium_release_date, {:class => 'form-control', :required => true}) %>
 </p>
 <%= f.submit({:class => 'btn btn-primary'}) %>
 </p>

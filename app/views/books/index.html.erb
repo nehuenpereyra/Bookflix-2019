@@ -1,14 +1,12 @@
-<h1>Listado de Libros</h1>
 <% if administrator_signed_in? %>
+  <h1>Listado de Libros</h1>
   <%= link_to 'Agregar libro', new_book_path %>
 <% end %>
-<div class="card-group">
+<div class="card-columns" style="margin-top:10px">
   <% @books.each do |book| %>
     <% if book.visibility %>
-      <div class="card align-items-center" style="padding:10px;border: none;" >
-        <div style="width:200px; height:300;">
-          <img src=<%=book.url_cover%> class="card-img-top" alt=<%=book.title%> style="width:200px; height:auto;">
-        </div>
+      <div class="card align-items-center text-center" style="border: none;" >
+        <img src=<%=book.url_cover%> class="card-img-top" alt=<%=book.title%> style="width:200px; height:300;overflow: hidden;">
         <div class="card-body">
           <h5 class="card-title">
             <%= link_to book.title, book_path(book), {:style=>'color: inherit;'}%>

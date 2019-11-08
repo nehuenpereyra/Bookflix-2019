@@ -1,6 +1,7 @@
 class PartsController < ApplicationController
 
-    before_action :authenticate_administrator!
+    before_action :authenticate_administrator! , except: [:show]
+    before_action :authenticate_subscriber!
 
     def new
         @part = Part.new
@@ -8,7 +9,7 @@ class PartsController < ApplicationController
     end
 
     def create
-        #render plain: params[:part].inspect
+        #render plain: params[:part].inspect        
         @books = Book.all
         @part = Part.new(part_params)
         if @part.save

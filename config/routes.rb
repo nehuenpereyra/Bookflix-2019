@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/preguntas_frecuentes', to: 'informations#pregunta'
   get '/contacto', to: 'informations#contacto'
   get '/condicion', to: 'informations#condicion'
+  get '/admin_panel', to: 'informations#admin_panel'
 end
