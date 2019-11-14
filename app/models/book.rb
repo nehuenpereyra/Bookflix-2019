@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
     #Atributos: title, description, expirate_date, url_cover, autor
     #Relacines: parts, trailer, genre, tags
-
+    
     has_many :parts
     has_one :trailer
     belongs_to :genre
@@ -31,4 +31,6 @@ class Book < ApplicationRecord
     def date_validation
       self.errors.add(:expiration_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.expiration_date)
     end
+    
 end
+

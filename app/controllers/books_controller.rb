@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
     
-    before_action :authenticate_administrator!, except: [:index, :show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator!, except: [:index, :show] || :authenticate_subscriber!
     
     def new
         @book = Book.new

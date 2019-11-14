@@ -34,6 +34,9 @@ en:
     password: Contraseña
     name: Nombre
     email: Correo
+    normal_release_date: Fecha de lanzamiento normal
+    premium_release_date: Fecha de lanzamiento premium
+
   activerecord:
     errors:
       messages:

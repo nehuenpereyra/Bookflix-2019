@@ -1,11 +1,12 @@
 class PartsController < ApplicationController
 
-    before_action :authenticate_administrator! , except: [:show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator! , except: [:show] || :authenticate_subscriber!
 
     def new
+        #render plain: params[:part].inspect 
         @part = Part.new
         @books = Book.all
+        
     end
 
     def create
