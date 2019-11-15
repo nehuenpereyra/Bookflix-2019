@@ -2,4 +2,4 @@
 <a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/books/'%> role="button" style="margin-left:10px;">Libros</a>
 <a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/genres/'%> role="button" style="margin-left:10px;">Generos</a>
 <a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/tags/'%> role="button" style="margin-left:10px;">Etiquetas</a>
-<%= link_to "Crear Admin", new_administrator_registration_path, {:class => 'btn btn-dark', :role => "button", :style =>"margin-left:10px;" }%>
+<%= link_to "Crear Admin", "admin_panel/create_admin", {:class => 'btn btn-dark', :role => "button", :style =>"margin-left:10px;" }%>

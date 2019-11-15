@@ -1,4 +1,14 @@
 <% if administrator_signed_in? %>
+  <% if params['removed']!=nil%>
+    <div class="alert alert-success" role="alert" style="margin-top:20px;">
+      Se a borrado exitosamente el libro: <%=params['removed']%>
+    </div>
+  <%end%>
+  <% if params['error_removed']!=nil%>
+    <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+      No se pudo eliminar el libro: <%=params['error_removed']%>.
+    </div>
+  <%end%>
   <h1>Listado de Libros</h1>
   <%= link_to 'Agregar libro', new_book_path %>
 <% end %>

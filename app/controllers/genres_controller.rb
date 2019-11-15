@@ -40,8 +40,12 @@ class GenresController < ApplicationController
 
     def destroy
         @genre = Genre.find(params[:id])
-        @genre.destroy
-        redirect_to genres_path
+        title = @genre.title
+        if @genre.destroy
+            redirect_to genres_path(removed: title)
+        else
+            redirect_to genres_path(error_removed: title)
+        end
     end
 
     private

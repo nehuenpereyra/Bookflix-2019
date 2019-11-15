@@ -48,8 +48,9 @@ class BooksController < ApplicationController
     def destroy
         @book = Book.find(params[:id])
         #@book.destroy
+        title = @book.title
         @book.update_attribute(:visibility,false)
-        redirect_to books_path
+        redirect_to books_path(removed: title)
     end
 
     private

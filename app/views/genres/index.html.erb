@@ -1,3 +1,13 @@
+<% if params['removed']!=nil%>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se a borrado exitosamente el género: <%=params['removed']%>
+  </div>
+<%end%>
+<% if params['error_removed']!=nil%>
+  <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+    No se pudo eliminar el género: <%=params['error_removed']%> ya que se esta utilizando por algun libro.
+  </div>
+<%end%>
 <h1>Listado de Géneros</h1>
 <%= link_to 'Agregar género', new_genre_path %>
 <table class="table table-striped">
