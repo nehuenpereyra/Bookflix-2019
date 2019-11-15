@@ -45,8 +45,10 @@ class PartsController < ApplicationController
 
     def destroy
         @part = Part.find(params[:id])
+        id_book = @part.book.id 
         @part.destroy
-        redirect_to parts_path
+        #redirect_to parts_path
+        redirect_to :controller => 'books', :action => 'show', :id => params[:book_id], :removed_part => @part.position
     end
 
     private

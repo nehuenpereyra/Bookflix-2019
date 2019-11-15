@@ -1,3 +1,15 @@
+<% if administrator_signed_in? %>
+  <% if params['removed_part']!=nil%>
+    <div class="alert alert-success" role="alert" style="margin-top:20px;">
+      Se a borrado exitosamente la parte: <%=params['removed_part']%>.
+    </div>
+  <%end%>
+  <% if params['removed_trailer']!=nil%>
+    <div class="alert alert-success" role="alert" style="margin-top:20px;">
+      Se a borrado exitosamente el trailer.
+    </div>
+  <%end%>
+<%end%>
 <div class="card mb-3" style="margin-top: 20px;" >
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -48,7 +60,15 @@
 <ul class="list-group">
   <% @book.parts.each do |part| %>
     <li class="list-group-item">
+    <div style="justify-content:space-between;" class="row">
       <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Parte: <%= part.position%></a>
+      <% if administrator_signed_in? %>
+        <div>
+        <%= link_to 'Editar', edit_part_path(part), :class => "btn btn-warning" %>
+        <%= link_to 'Borrar', part_path(part,:book_id => @book.id), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => "btn btn-warning" %>
+        </div>
+      <%end%>
+      </div>
     </li>
   <% end %>
 </ul>

@@ -45,7 +45,8 @@ class TrailersController < ApplicationController
     def destroy
         @trailer = Trailer.find(params[:id])
         @trailer.destroy
-        redirect_to trailers_path
+        redirect_to :controller => 'books', :action => 'show', :id => @trailer.book.id, :removed_trailer => 'true'
+        #redirect_to trailers_path
     end
 
     private
