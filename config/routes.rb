@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get "/admin_panel/create_admin" => "adminpanel#new_admin"
   post "/admin_panel/create_admin" => "adminpanel#create_admin"
   get "/admin_panel/show_admin" => "adminpanel#show_admin"  
-  #https://stackoverflow.com/questions/24875403/only-allow-admin-user-to-create-new-users-in-rails-with-devise-no-external-modu
+  get "/admin_panel/index_admin" => "adminpanel#index_admin" 
+  delete "/admin_panel/index_admin" => "adminpanel#destroy"  
+
 
   #Defino la ruta principal de la página
   root 'home#index'

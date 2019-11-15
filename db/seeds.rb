@@ -8,7 +8,7 @@
 
 puts "Crear el administrador"
 if !Administrator.exists?(email: "admin@admin.com")
-    Administrator.create!(email: "admin@admin.com", password: "admin123")
+    Administrator.create!(email: "admin@admin.com", password: "admin123", privileges:0)
 end
 
 puts "Crear los Suscriptores"
