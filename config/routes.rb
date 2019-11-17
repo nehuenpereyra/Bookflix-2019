@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :parts
   resources :trailers
   devise_for :subscribers
+  resources :editorials
+  resources :authors
 
   get "/admin_panel/create_admin" => "adminpanel#new_admin"
   post "/admin_panel/create_admin" => "adminpanel#create_admin"

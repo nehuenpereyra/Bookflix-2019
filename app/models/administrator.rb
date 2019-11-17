@@ -7,9 +7,9 @@ class Administrator < ApplicationRecord
   VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i    
   validates :email, length: { minimum: 5 }, presence: true, format: {with:VALID_EMAIL_REGEX}
   
-  validates :current_password, length: { minimum: 6, maximum: 12 }
+  #validates :current_password, length: { minimum: 6, maximum: 12 }
   
   validates :password, length: { minimum: 6, maximum: 12 }, presence: false
-  validates :password_confirmation, length: { minimum: 6, maximum: 12 }, presence: false
+  #validates :password_confirmation, length: { minimum: 6, maximum: 12 }, presence: false
 
 end

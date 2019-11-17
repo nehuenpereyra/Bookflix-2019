@@ -34,9 +34,15 @@
           <%end%>
         </div>
         <p class="card-text"><%= @book.description %></p>
-        <p class="card-text">Autor: <%= @book.autor %></p>
-        <p class="card-text">Editorial: <%= @book.editorial %></p>
-        <div style="display:inline;">
+        <div class="row align-items-center" style="margin:10px;">
+          <p class="card-text">Autor:</p>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/authors/'+@book.author.id.to_s %> role="button" style="margin-left:10px;"><%= @book.author.name%></a>
+        </div>
+        <div class="row align-items-center" style="margin:10px;">
+          <p class="card-text">Editorial:</p>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/editorials/'+@book.editorial.id.to_s %> role="button" style="margin-left:10px;"><%= @book.editorial.name%></a>
+        </div>
+        <div class="row align-items-center" style="margin:10px;">
           <p class="card-text">Género:</p>
           <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/genres/'+@book.genre.id.to_s %> role="button" style="margin-left:10px;"><%= @book.genre.title%></a>
         </div>
@@ -60,14 +66,14 @@
 <ul class="list-group">
   <% @book.parts.each do |part| %>
     <li class="list-group-item">
-    <div style="justify-content:space-between;" class="row">
-      <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Parte: <%= part.position%></a>
-      <% if administrator_signed_in? %>
-        <div>
-        <%= link_to 'Editar', edit_part_path(part), :class => "btn btn-warning" %>
-        <%= link_to 'Borrar', part_path(part,:book_id => @book.id), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => "btn btn-warning" %>
-        </div>
-      <%end%>
+      <div style="justify-content:space-between;" class="row">
+        <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Parte: <%= part.position%></a>
+        <% if administrator_signed_in? %>
+          <div>
+            <%= link_to 'Editar', edit_part_path(part), :class => "btn btn-warning" %>
+            <%= link_to 'Borrar', part_path(part,:book_id => @book.id), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => "btn btn-warning" %>
+          </div>
+        <%end%>
       </div>
     </li>
   <% end %>

@@ -16,7 +16,11 @@
   </p>
   <p>
     <%= f.label :autor %><br />
-    <%= f.text_field(:autor, {:class => 'form-control', :required => true}) %>
+    <% if @book.author != nil %>
+      <%= f.select(:author_id, options_for_select(@authors.map{ |author| [author.name,author.id] },selected: [@book.author.name,@book.author.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:author_id, options_for_select(@authors.map{ |author| [author.name,author.id] }), {:class => 'custom-select'}) %>
+    <%end%>
   </p>
   <p>
     <%= f.label(:imagen,'Url portada') %><br />
@@ -24,7 +28,11 @@
   </p>
   <p>
     <%= f.label(:genre_id,"Género") %><br />
-    <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] }), {:class => 'custom-select'}) %>
+    <% if @book.genre != nil %>
+      <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] },selected: [@book.genre.title,@book.genre.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] }), {:class => 'custom-select'}) %>
+    <%end%>
   </p>
   <p>
     <%= f.label(:description,"Descripción") %><br />
@@ -36,7 +44,11 @@
   </p>
   <p>
     <%= f.label :editorial %><br />
-    <%= f.text_field(:editorial, {:class => 'form-control', :required => true}) %>
+    <% if @book.editorial != nil %>
+      <%= f.select(:editorial_id, options_for_select(@editorials.map{ |editorial| [editorial.name,editorial.id] },selected: [@book.editorial.name,@book.editorial.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:editorial_id, options_for_select(@editorials.map{ |editorial| [editorial.name,editorial.id] }), {:class => 'custom-select'}) %>
+    <%end%>
   </p>
   <p>
     <%= f.label(:tag_ids,"Etiquetas") %><br />

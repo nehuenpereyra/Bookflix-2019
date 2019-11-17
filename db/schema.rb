@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_203801) do
+ActiveRecord::Schema.define(version: 2019_11_17_111105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 2019_11_15_203801) do
     t.index ["reset_password_token"], name: "index_administrators_on_reset_password_token", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -60,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_203801) do
     t.string "editorial"
     t.integer "genre_id"
     t.boolean "visibility"
+    t.integer "editorial_id"
+    t.integer "author_id"
   end
 
   create_table "books_tags", id: false, force: :cascade do |t|
@@ -67,6 +76,13 @@ ActiveRecord::Schema.define(version: 2019_11_15_203801) do
     t.bigint "tag_id"
     t.index ["book_id"], name: "index_books_tags_on_book_id"
     t.index ["tag_id"], name: "index_books_tags_on_tag_id"
+  end
+
+  create_table "editorials", force: :cascade do |t|
+    t.string "name"
+    t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
