@@ -1,5 +1,9 @@
 <% if subscriber_signed_in? || administrator_signed_in? %>
-  <%= render :template => 'books/index', :collection => @books%>
+  
+  <%= render :template => 'news/news_home', :collection => @noticias%>
+
+  <%= render :template => 'books/index', :collection => @books%> 
+
 <% else %>
   <div class="text-center">
     <h3>Bienvenido a Bookflix!</h3>

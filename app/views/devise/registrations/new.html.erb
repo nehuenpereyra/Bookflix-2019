@@ -16,24 +16,27 @@
         </div>
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com"}) %>
+          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com", required: true}) %>
         </div>
         <div class="field">
           <%= f.label :Numero_de_tarjeta %><br />
-          <%= f.number_field(:card_number, {:class => 'form-control', required: true}) %>
+          <%= f.number_field(:card_number, {:class => 'form-control', required: true,:placeholder => "XXXX-XXXX-XXXX-XXXX"}) %>
         </div>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+          Ingrese el numero de la tarjeta sin guiones.
+        </small>
         <div class="field">
           <%= f.label :fecha_de_vencimiento %><br />
-          <%= f.date_field(:expiration_date, {:class => 'form-control',:type => "month"}) %>
+          <%= f.date_field(:expiration_date, {:class => 'form-control',:type => "month", required: true}) %>
         </div>
         <div class="field">
           <%= f.label :Codigo_de_verificacion %><br />
-          <%= f.number_field(:card_key, {:class => 'form-control', :placeholder => "CVC"}) %>
+          <%= f.number_field(:card_key, {:class => 'form-control', :placeholder => "CVC", required: true}) %>
         </div>
         <div class="form-group my-2">
           <div class="field">
             <%= f.label :Contraseña %>
-            <%= f.password_field(:password, {:class => 'form-control', :autocomplete=> "new-password"})  %>
+            <%= f.password_field(:password, {:class => 'form-control', :autocomplete=> "new-password", required: true})  %>
           </div>
         </div>
         <small id="passwordHelpBlock" class="form-text text-muted">
@@ -41,7 +44,7 @@
         </small>
         <div class="field">
           <%= f.label :Confirmar_contraseña %><br />
-          <%= f.password_field(:password_confirmation, {:class => 'form-control', autocomplete: "new-password"}) %>
+          <%= f.password_field(:password_confirmation, {:class => 'form-control', autocomplete: "new-password", required: true}) %>
         </div>
         <div class="actions my-3">
           <%= f.submit('Registrate',{:class => 'btn btn-primary btn-block' }) %>
