@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_for :subscribers
   resources :editorials
   resources :authors
+  resources :profiles
 
   get "/admin_panel/create_admin" => "adminpanel#new_admin"
   post "/admin_panel/create_admin" => "adminpanel#create_admin"

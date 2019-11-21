@@ -1,0 +1,7 @@
+<div style="margin-top:20px">
+  <div style="justify-content:space-between;" class="row">
+    <h3>Perfil de: <%= @profile.name %></h3>
+    <%= link_to "Cambiar perfil", profiles_path, {:class => 'btn btn-dark', :role => "button", :style =>"margin-left:10px;" }%>
+  </div>
+  <%= link_to 'Regresar', url_for(:back) %>
+</div>

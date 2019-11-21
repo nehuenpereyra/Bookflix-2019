@@ -13,10 +13,10 @@ end
 
 puts "Crear los Suscriptores"
 if !Subscriber.exists?(email: "jeansoft@hotmail.com")
-    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft", card_number: "4536000123456789", expiration_date: "2020-11-14",card_key: "123")
+    Subscriber.create!(email: "jeansoft@hotmail.com", name: "jean", last_name: "soft", password: "jeansoft", card_number: "4536000123456789", expiration_month_date:6,expiration_year_date: 2020 ,card_key: "123",membership_premium:false,current_profiles: 0)
 end
 if !Subscriber.exists?(email: "admin@admin.com")
-    Subscriber.create!(email: "admin@admin.com", name: "admin", last_name: "admin", password: "admin123",card_number: "6666666666666666", expiration_date: "2020-11-14",card_key: "666")
+    Subscriber.create!(email: "admin@admin.com", name: "admin", last_name: "admin", password: "admin123",  card_number: "6666666666666666", expiration_month_date:6,expiration_year_date: 2020,card_key: "666", membership_premium:true ,current_profiles:0)
 end
 
 puts "Cargar los Géneros"
@@ -51,6 +51,9 @@ puts "Cargar las editoriales"
 Editorial.find_or_create_by(name: "El ateneo")
 Editorial.find_or_create_by(name: "Salamanca")
 Editorial.find_or_create_by(name: "Cosmos")
+
+puts "Cargar perfiles"
+Profile.find_or_create_by(name: "Toto",url_image:"https://pixel.nymag.com/imgs/daily/vulture/2019/05/14/14-george-rr-martin.w330.h330.jpg",age_restriction:false,subscriber_id:1)
 
 
 puts "Cargar libros"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_111105) do
+ActiveRecord::Schema.define(version: 2019_11_21_201015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(version: 2019_11_17_111105) do
     t.integer "book_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "url_image"
+    t.boolean "age_restriction"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "subscriber_id"
+  end
+
   create_table "subscribers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,6 +124,10 @@ ActiveRecord::Schema.define(version: 2019_11_17_111105) do
     t.string "card_number"
     t.date "expiration_date"
     t.integer "card_key"
+    t.boolean "membership_premium"
+    t.integer "current_profiles"
+    t.integer "expiration_month_date"
+    t.integer "expiration_year_date"
     t.index ["email"], name: "index_subscribers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_subscribers_on_reset_password_token", unique: true
   end

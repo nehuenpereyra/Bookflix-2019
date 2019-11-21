@@ -21,7 +21,8 @@
         </div>
         <div class="field">
           <%= f.label :fecha_de_vencimiento %><br />
-          <%= f.date_field(:expiration_date, {:class => 'form-control'}) %>
+          <%= f.number_field(:expiration_month_date, {:class => 'form-control',required: true,:placeholder => "Mes"}) %>
+          <%= f.number_field(:expiration_year_date, {:class => 'form-control', required: true,:placeholder => "Año", :style=> "margin:10px 0px 0px 0px"}) %>
         </div>
         <div class="field">
           <%= f.label :Codigo_de_verificacion %><br />
@@ -45,6 +46,10 @@
         <small id="passwordHelpBlock" class="form-text text-muted">
           Necesitamos su contraseña actual para confirmar sus cambios.
         </small>
+        <div class="field">
+          <%= f.label :Cuenta_Premium %><br />
+          <%= f.check_box(:membership_premium, {:class => 'form-control'}, true, false)  %>
+        </div>
         <div class="actions my-3">
           <%= f.submit('Actualizar datos',{:class => 'btn btn-primary btn-block' }) %>
         </div>
