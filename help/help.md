@@ -18,3 +18,6 @@ rake db:seed
 Para subir imagenes y pdf
 rails active_storage:install
 <%-# <%= image_tag f.pdf.preview(resize_to_limit: [100, 100]) %>-%>
+
+Utiles para cuando hay problemas con migraciones
+rake db:drop db:create db:migrate

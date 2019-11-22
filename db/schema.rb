@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_174102) do
+ActiveRecord::Schema.define(version: 2019_11_21_201015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_174102) do
     t.string "card_number"
     t.date "expiration_date"
     t.integer "card_key"
+    t.boolean "premium_membership"
     t.boolean "membership_premium"
     t.integer "current_profiles"
     t.integer "expiration_month_date"

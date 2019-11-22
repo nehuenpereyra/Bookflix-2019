@@ -1,9 +1,8 @@
 <% if subscriber_signed_in? || administrator_signed_in? %>
-  
-  <%= render :template => 'news/news_home', :collection => @noticias%>
-
-  <%= render :template => 'books/index', :collection => @books%> 
-
+  <div style="margin:20px">
+    <%= render :template => 'news/news_home', :collection => @noticias%>
+  </div>
+  <%= render :template => 'books/index', :collection => @books%>
 <% else %>
   <div class="text-center">
     <h3>Bienvenido a Bookflix!</h3>

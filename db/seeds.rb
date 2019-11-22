@@ -175,3 +175,74 @@ Trailer.find_or_create_by(book_id:3,
     url_document: "https://grannyswag.files.wordpress.com/2015/06/1-the-hunger-games.pdf",
     normal_release_date: "2020-11-30",
     premium_release_date: "2020-11-30")
+
+
+puts "Cargar Noticias"
+news1 = News.find_or_create_by(
+    title: "George R.R. Martin terminará su próximo libro antes de participar en ‘House of the Dragon’",
+    content: "El autor de 'Canción de Hielo y Fuego' anunció que terminar su próximo libro es la prioridad antes de involucrarse en la serie 'House of the Dragon'.
+
+    Hace apenas un día que HBO hizo oficial el anuncio de House of the Dragon, la nueva serie de Juego de Tronos que se enfocará en la Casa Targaryen. Ante esto, el autor de Canción de Hielo y Fuego, George R.R. Martin, ofreció algunos detalles del proyecto y anticipó que no escribirá un solo guion hasta terminar con Vientos de Invierno, el próximo libro de la saga.
+    
+    En una entrada en su blog, Martin especificó que Winds of Winter es su prioridad, y por mucho que quiera escribir episodios de House of the Dragon, no lo hará hasta que el libro no se haya distribuido. Después de esto, el autor espera participar en la próxima serie de HBO de un modo similar a Juego de Tronos.
+    
+    Martin se abstuvo de dar información específica de la nueva serie, aunque dijo que ha estado en desarrollo por varios años con dos títulos distintos. House of the Dragon es el primer concepto que el autor presentó a HBO en 2016, cuando comenzó a discutirse cuál sería el próximo paso de la popular serie de televisión.
+    
+    Ryan Condal, que junto a Miguel Sapochnik funge como showrunner, ha escrito una 'cantidad considerable' de la serie. De acuerdo con Martin, Condal es un guionista excelente y gran fanático de Canción de Hielo y Fuego, aunque queda mucho trabajo por hacer.
+    "
+)
+
+news2 = News.find_or_create_by(title:"Los Juegos del Hambre tendrá nuevo libro en forma de precuela",
+    content:"Si algo le debemos a George Lucas (o, al menos, los estudios de Hollywood), es la moda de las precuelas. Pese a lo criticada que fue su decisión de contar al 'antes de' de Star Wars, ayudó a sentar las bases sobre cómo hacer una película de origen, una precuela, y desde entonces muchas sagas han seguido su senda: 'X-Men' y su tetralogía que comenzó con 'Primera Generación'; Harry Potter con sus 'Animales Fantásticos'; 'El señor de los anillos' con 'El hobbit'; Alien con 'Prometheus'... y ahora una más se une a la lista.
+
+    'Los Juegos del Hambre', la saga distópica escrita por Suzanne Collins fue adaptada al cine, lanzando a Jennifer Lawrence al estrellato y convirtiéndose en un auténtico fenómeno fan a principios de los 2010. Pese a que su rendimiento en taquilla bajó en la última entrega (debido a la decisión de dividir el tercer libro en dos partes), el éxito fue brutal, y era lógico que, tarde o temprano, se quisiera seguir estirando el chicle. El universo creado por Collins es muy rico en matices y personajes, y una precuela contándonos como el mundo llegó a plantear los primeros Juegos del Hambre sería muy interesante de ver.
+    
+    Suzanne Collins ha confirmado que este libro precuela nos contará la historia de los Décimos Juegos del Hambre, 64 años antes de lo que leímos en el primero de los libros, y se lanzará el próximo mayo de 2020. Lionsgate, productora de la tetralogía cinematográfica, ha aprovechado para subirse al carro y confirmar que ya están en conversaciones para una próxima adaptación a la gran pantalla."
+)
+
+news3 = News.find_or_create_by(title:"J.K. Rowling ya está escribiendo el guion de ‘Animales Fantásticos 3’",
+    content:"En la próximo estación de otoño llega a los cines ‘Animales Fantásticos 2: Los crímenes de Grindelwald‘ y nos llevará de nuevo al mundo mágico creado por J.K. Rowling en la saga de ‘Harry Potter‘. Sin embargo, esta película tiene dos motivos muy especiales para todos los potterheads del universo: regresa Albus Dumbledore, en versión joven y gracias a Jude Law, y volvemos al Colegio Hogwarts de Magia y Hechicería. La secuela, una vez más, está dirigida por David Yates y vuelve a contar con el guion de la propia J.K. Rowling. Después de esta segunda parte, tendremos otros dos años de espera hasta la nueva entrega de una pentalogía de la saga. Así pues, para asegurarse de que la tercera película de la franquicia llegue a tiempo, la escritora ya ha cogido el Hogwarts Express porque está trabajando en el guion de ‘Animales Fantásticos 3‘.
+
+    La autora confirmó sus actuales proyectos, entre los que estaba ‘Animales Fantásticos 3’, de la siguiente manera: «Acabo de terminar la cuarta novela de Galbraith, “Lethal White”, y ahora estoy escribiendo el guion de ‘Animales Fantásticos 3’. Después de eso, escribiré otro libro para niños. He estado dándole vueltas a la historia -que no tiene que ver con ‘Harry Potter’ o el mundo mágico’- durante unos seis años, así que ya es hora de que la escriba en papel».
+    
+    Demostrando su ética de trabajo, su inmenso talento y su fascinante manejo del tiempo, Rowling confirmó en su página web oficial que acaba de terminar una novela y que está trabajando en el guion de la próxima película de la saga. Ya sabíamos que ‘Animales Fantásticos 3‘ estaba en camino, pero es bueno saber que la creadora de este universo ya está trabajando duramente en la elaboración del tercer capítulo de esta serie protagonizada por Newt Scamander (Eddie Redmayne) y entrelazándose directamente con la mitología establecida por ‘Harry Potter‘."
+)
+
+news4 = News.find_or_create_by(title:"Stephen King, encantado con Cementerio de animales: '¡Es adulta, madura y genial!'",
+    content:"Cementerio de animales es la última de las muchas adaptaciones de las novelas de Stephen King que llega a la gran pantalla. Una nueva versión de la obra que llega este viernes 5 de abril a los cines y que incluye algunas variaciones importantes respecto a la trama original escrita por el maestro del terror.
+
+    El propio King se ha pronunciado ya sobre estos cambios, y su reacción no ha podido ser más postiva. 'Es una película adulta y madura. ¡Es jodidamente genial!'', afirmó entusiasmado el celebre autor.
+    
+    ((ATENCIÓN: ESTA NOTICIA CONTIENE SPOILERS))
+    
+     En una entrevista concedida a Entertainment Weekly, el maestro del terror ha opinado sobre la película que dirigen Kevin Kolsch y Dennis Widmyer: Es algo diferente. Hicieron un buen trabajo.
+    
+    En esta nueva versión de Cementerio de animales, a diferencia del libro original, y de la película de 1989, quien vuelve a la vida no es el niño pequeño, Gage, sino su hermana mayor, Ellie. Estas modificaciones no han molestado a King, sino todo lo contrario. El escritor no entiene que algunos de sus fans mas puristas no vean con buenos ojos esta variante y se muestra algo experado ante las quejas:
+    
+     Puedes ir a Tampa por la ruta 301, pero también por la ruta 17. En ambos casos, ¡vas a llegar a Tampa!'', sentencia. El autor de El resplandor o It afirmó que el hecho de que sea la niña y no el niño la que vuelve a la vida 'no cambia nada. Es más, King comprende por qué se hicieron estas modificaciones e incluso las justifica, ya que Ellie puede dar más juego cinematográficamente hablando que el niño pequeño: Quizá es más sencillo trabajar con un zombie cuando es una niña más crecida que con un niño de tres años.
+    "
+)
+
+news5 = News.find_or_create_by(title:"Todo listo para 'Animales fantásticos 3': Warner confirma fecha, reparto y director de la nueva entrega del universo Harry Potter",
+    content:"'Animales fantásticos: Los crímenes de Grindelwald' no funcionó tan bien en taquilla como esperaba Warner, ya que ingresó 161 millones de dólares menos que su predecesora. Sin embargo, esta nueva franquicia dentro del universo Harry Potter sigue dando pingües beneficios y ahora se ha confirmado tanto la fecha como el equipo de la tercera entrega.
+
+    Hace unos días se anunciaba que el rodaje 'Animales fantásticos 3' iba a arrancar a principios de 2020 y ahora Deadline concreta que será en primavera del año que viene cuando las cámaras empiecen a grabar. Sigue habiendo tiempo de sobra para tener lista la película de cara a su estreno el 12 de noviembre de 2020.
+    
+    La otra jugosa novedad es que el personaje de la Profesora Eulalie “Lally” Hicks, interpretado por Jessica Williams, va a ganar mucha importancia respecto a la segunda entrega. Al igual que con las dos primeras, la acción de la historia se situará en multitud de países a lo largo del planeta, pero la ciudad de Rio de Janeiro en Brasil será la que tenga una mayor importancia.
+    
+    También llega la confirmación definitiva del regreso de Eddie Redmayne como Newt Scamander, Jude Law como Albus Dumbledore, Johnny Depp como Gellert Grindelwald, Ezra Miller como Credence, Alison Sudol como Queenie Goldstein, Dan Fogler como Jacob Kowalski y Katherine Waterston como Tina Goldstein.
+    
+    Además, David Yates volverá a ocuparse de la puesta en escena. Yates entró al universo de Harry Potter en 'La orden del Fénix' y desde entonces ha sido el único director del mismo. Por su parte, J.K. Rowling repite en el guion, contando en esta ocasión con la ayuda de Steve Kloves, quien regresa a un universo que parecía haber dejado atrás tras la segunda entrega de 'Las reliquias de la muerte'."
+)
+
+news6 = News.find_or_create_by(title:"'El instituto', lo nuevo de Stephen King",
+    content:"El libro, sobre chicos secuestrados en una institución para desarrollar sus dones  --con ecos de Ojos de fuego y La zona muerta--, llega en un año increíble para King, desde el estreno de It 2 y Doctor Sueño hasta el proyecto para al fin adaptar The Stand y el regreso de Creepshow. 
+
+    La leyenda de Stephen King (Portland, 1942) como Rey del Terror y refundador del género --al igual que la del Arthur erigiendo Camelot-- empieza muy temprano y de muy joven. Y --como corresponde-- no le faltan rasgos dramáticos: padre que desaparece, madre que se convierte en fuerza de la naturaleza, y el pequeño Stephen evadiéndose por entre las sombras de las ficciones de lo sobrenatural. 'Desde muy niño, siempre quise que me asustaran', recordaría en sus memorias.
+    
+    Hasta que un buen día se dijo eso de 'Yo podría hacer eso'. Es decir: el asustado comprendió que había llegado el momento de asustar. Y lo hizo haciendo uso de un don con el que pocos cuentan. Y --desde sus primeras páginas-- King ya contó con eso de 'Dejad que los niños se acerquen a mí'. Y los niños se acercaron y siguen acercándose y de ahí que tal vez King sea --junto con Dickens-- el más grande y constante paladín de las criaturas en problemas. King es, sí, el Gran Rey de los Chicos.
+    
+    'Cuando somos niños pensamos diferente. Pensamos en ángulos en lugar de pensar en línea recta... La más esencial y definitoria característica de la infancia no pasa por la nada esforzada capacidad para fundir los sueños con la realidad sino por la alienación y por el sentirse tan solo. No existen palabras para describir las oscuras exhalaciones y los bruscos giros que emitimos y damos durante la infancia. Un niño inteligente no demora en comprenderlo y no puede sino rendirse y calcular sus inevitables consecuencias. Y un niño que calcula esas consecuencias ya no es un niño', recordará King.
+    
+    "
+)
