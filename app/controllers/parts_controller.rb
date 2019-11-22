@@ -1,11 +1,12 @@
 class PartsController < ApplicationController
 
-    before_action :authenticate_administrator! , except: [:show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator! , except: [:show] || :authenticate_subscriber!
 
     def new
+        #render plain: params[:part].inspect 
         @part = Part.new
         @books = Book.all
+        
     end
 
     def create
@@ -44,8 +45,10 @@ class PartsController < ApplicationController
 
     def destroy
         @part = Part.find(params[:id])
+        id_book = @part.book.id 
         @part.destroy
-        redirect_to parts_path
+        #redirect_to parts_path
+        redirect_to :controller => 'books', :action => 'show', :id => params[:book_id], :removed_part => @part.position
     end
 
     private

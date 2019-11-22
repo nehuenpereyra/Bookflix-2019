@@ -1,0 +1,38 @@
+<% if params['removed']!=nil%>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se a borrado exitosamente el Autor: <%=params['removed']%>
+  </div>
+<%end%>
+<% if params['error_removed']!=nil%>
+  <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+    No se pudo eliminar el Autor: <%=params['error_removed']%> ya que se esta utilizando por algun libro.
+  </div>
+<%end%>
+<h1>Listado de Autores</h1>
+<%= link_to 'Agregar Autor', new_author_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Autor</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td><%= author.name %></td>
+        <td>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Ver', author_path(author), {:style=>'color: inherit;'}%>
+          </button>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Editar', edit_author_path(author), {:style=>'color: inherit;'} %>
+          </button>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Borrar', author_path(author), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

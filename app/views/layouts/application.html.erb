@@ -16,7 +16,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #282828;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #282828;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,30 +31,32 @@
             <% end %>
           </li>
         </ul>
-
-
-
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-center">
           <li class="nav-item active">
             <% if subscriber_signed_in? %>
-              <% if current_subscriber.email == "admin@admin.com" && !administrator_signed_in?  %>
-                <%= link_to "Ingresar Admin", new_administrator_session_path, class: 'nav-link' %>
+              <%if current_profile != nil%>
+                <li class="nav-item active">
+                  <%= link_to image_tag(current_profile.url_image,style: "width:60px;height:60px;border-radius: 50%;border-width: 2px;border-style: solid;border-color: #c2212b;"), profile_path(current_profile) %>
+                </li>
               <%end%>
-
               <li class="nav-item active">
                 <%= link_to "Noticias", news_index_path, class: 'nav-link' %>
-              </li>              
-
+              </li>
               <li class="nav-item active">
                 <%= link_to "Configuracion", edit_subscriber_registration_path, class: 'nav-link' %>
               </li>
-
               <li class="nav-item active">
                 <%= link_to "Cerrar sesion", destroy_subscriber_session_path, method: :delete, class: 'nav-link' %>
               </li>
-
             <% else %>
-              <%= link_to "Iniciar sesion", new_subscriber_session_path, {:class => 'nav-link'}%>
+              <% if !administrator_signed_in? %>
+                <%= link_to "Iniciar sesion", new_subscriber_session_path, {:class => 'nav-link'}%>
+              <% end %>
+            <% end %>
+            <% if administrator_signed_in? %>
+              <li class="nav-item active">
+                <%= link_to "Cerrar sesion", destroy_administrator_session_path, method: :delete, class: 'nav-link' %>
+              </li>
             <% end %>
           </li>
         </ul>

@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
-    before_action :authenticate_administrator! , except: [:show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator! , except: [:show] || :authenticate_subscriber!
+    
 
     def new
         @tag = Tag.new
@@ -40,8 +40,12 @@ class TagsController < ApplicationController
 
     def destroy
         @tag = Tag.find(params[:id])
-        @tag.destroy
-        redirect_to tags_path
+        title = @tag.title
+        if @tag.destroy
+            redirect_to tags_path(removed: title)
+        else
+            redirect_to tags_path(error_removed: title)
+        end
     end
 
     private

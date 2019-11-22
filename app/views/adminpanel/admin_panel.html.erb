@@ -1,0 +1,10 @@
+<h3>Panel del adminsitración:</h3>
+<a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/books/'%> role="button" style="margin-left:10px;">Libros</a>
+<a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/genres/'%> role="button" style="margin-left:10px;">Géneros</a>
+<a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/tags/'%> role="button" style="margin-left:10px;">Etiquetas</a>
+<a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/editorials/'%> role="button" style="margin-left:10px;">Editoriales</a>
+<a class="btn btn-dark" href=<%= request.protocol+request.host_with_port+'/authors/'%> role="button" style="margin-left:10px;">Autores</a>
+<% if current_administrator.privileges == 0%>
+  <%= link_to "Listado de Admins", "admin_panel/index_admin", {:class => 'btn btn-dark', :role => "button", :style =>"margin-left:10px;" }%>
+<% end%>
+<%= link_to "Configuración", edit_administrator_registration_path, {:class => 'btn btn-dark', :role => "button", :style =>"margin-left:10px;" } %>

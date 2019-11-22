@@ -12,7 +12,15 @@
   <% end %>
   <p>
     <%= f.label(:book_id,"Libro") %><br />
-    <%= f.select(:book_id, options_for_select(@books.map{ |book| [book.title,book.id] }), {:class => 'custom-select'}) %>
+    <% if @trailer.book!=nil %>
+      <%= f.label(:book_id,@trailer.book.title) %>
+      <%= f.hidden_field(:book_id, :value => @trailer.book.id ) %>
+    <%elsif params['book_id']!=nil %>
+      <%= f.label(:book_id,@books.find(params['book_id']).title) %>
+      <%= f.hidden_field(:book_id, :value => params['book_id'] ) %>
+    <%else%>
+      <%= f.select(:book_id, options_for_select(@books.map{ |book| [book.title,book.id] }), {:class => 'custom-select'}) %>
+    <%end%>
   </p>
   <p>
     <%= f.label(:url_document,"Url del documento") %><br />
@@ -25,6 +33,6 @@
   <%= f.label(:premium_release_date,"Fecha de lanzamiento suscriptor premium") %><br />
   <%= f.date_field(:premium_release_date, {:class => 'form-control', :required => true}) %>
 </p>
-<%= f.submit({:class => 'btn btn-primary'}) %>
+<%= f.submit('Cargar trailer',{:class => 'btn btn-primary'}) %>
 </p>
 <% end %>

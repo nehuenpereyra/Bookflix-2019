@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
     
-    before_action :authenticate_administrator!, except: [:index, :show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator!, except: [:index, :show] || :authenticate_subscriber!
     
     def new
         @book = Book.new
         @genres = Genre.all
         @tags = Tag.all
+        @editorials = Editorial.all
+        @authors = Author.all
     end
 
     def create
@@ -14,6 +15,8 @@ class BooksController < ApplicationController
         #render plain: book_params
         @genres = Genre.all
         @tags = Tag.all
+        @editorials = Editorial.all
+        @authors = Author.all
         @book = Book.new(book_params)
         @book.visibility = true
         if @book.save
@@ -33,11 +36,15 @@ class BooksController < ApplicationController
 
     def edit
         @genres = Genre.all
+        @editorials = Editorial.all
+        @authors = Author.all
         @book = Book.find(params[:id])
     end
 
     def update
         @genres = Genre.all
+        @editorials = Editorial.all
+        @authors = Author.all
         @book = Book.find(params[:id])
         if @book.update(book_params)
         redirect_to @book
@@ -49,13 +56,14 @@ class BooksController < ApplicationController
     def destroy
         @book = Book.find(params[:id])
         #@book.destroy
+        title = @book.title
         @book.update_attribute(:visibility,false)
-        redirect_to books_path
+        redirect_to books_path(removed: title)
     end
 
     private
     def book_params
-        params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :autor, :editorial, :genre_id, :tag_ids => [])
+        params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :author_id, :editorial_id, :genre_id, :tag_ids => [])
     end
     
 end

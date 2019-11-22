@@ -1,7 +1,6 @@
 class GenresController < ApplicationController
     
-    before_action :authenticate_administrator! , except: [:show]
-    before_action :authenticate_subscriber!
+    before_action :authenticate_administrator! , except: [:show] || :authenticate_subscriber!
 
     def new
         @genre = Genre.new
@@ -41,8 +40,12 @@ class GenresController < ApplicationController
 
     def destroy
         @genre = Genre.find(params[:id])
-        @genre.destroy
-        redirect_to genres_path
+        title = @genre.title
+        if @genre.destroy
+            redirect_to genres_path(removed: title)
+        else
+            redirect_to genres_path(error_removed: title)
+        end
     end
 
     private
