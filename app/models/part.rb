@@ -22,8 +22,8 @@ class Part < ApplicationRecord
         end
     end
     def date_validation
-      self.errors.add(:normal_release_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.normal_release_date)
-      self.errors.add(:premium_release_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.premium_release_date)
+      self.errors.add(:normal_release_date, "no esta en rango.") unless ((Date.today)..(3.years.from_now)).include?(self.normal_release_date)
+      self.errors.add(:premium_release_date, "no esta en rango.") unless ((Date.today)..(3.years.from_now)).include?(self.premium_release_date)
     end
     def part_validation
       if (url_document.last(4)!='.pdf')

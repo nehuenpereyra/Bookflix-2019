@@ -4,6 +4,7 @@ class Profile < ApplicationRecord
     validate :user_must_have_max_profiles_per_subscription , on: :create
 
     validates :name, length: {minimum: 4, maximum: 12 }
+    validates :name, presence: true, allow_blank: false
     
     private
     def user_must_have_max_profiles_per_subscription

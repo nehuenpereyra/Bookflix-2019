@@ -19,7 +19,7 @@ class Trailer < ApplicationRecord
         end
     end
     def date_validation
-      self.errors.add(:normal_release_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.normal_release_date)
-      self.errors.add(:premium_release_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.premium_release_date)
+      self.errors.add(:normal_release_date, "no esta en rango.") unless ((Date.today)..(3.years.from_now)).include?(self.normal_release_date)
+      self.errors.add(:premium_release_date, "no esta en rango.") unless ((Date.today)..(3.years.from_now)).include?(self.premium_release_date)
     end
 end

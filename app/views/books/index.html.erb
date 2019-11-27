@@ -1,7 +1,7 @@
 <% if administrator_signed_in? %>
   <% if params['removed']!=nil%>
     <div class="alert alert-success" role="alert" style="margin-top:20px;">
-      Se a borrado exitosamente el libro: <%=params['removed']%>
+      Se ha borrado exitósamente el libro: <%=params['removed']%>
     </div>
   <%end%>
   <% if params['error_removed']!=nil%>
@@ -31,7 +31,7 @@
                 <%= link_to 'Editar', edit_book_path(book), {:style=>'color: inherit;'} %>
               </button>
               <button type="button" class="btn btn-dark">
-                 <%= link_to 'Borrar', book_path(book), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+                <%= link_to 'Borrar', book_path(book), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
               </button>
             <% end %>
           </div>

@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
     
+    before_action :authenticate_administrator!, except: [:index] || :authenticate_subscriber!
+
     def new
         @news = News.new
     end
@@ -7,9 +9,9 @@ class NewsController < ApplicationController
     def create
         @news = News.new(news_params)
         if @news.save
-            redirect_to @news
+            redirect_to :controller => 'news', :action => 'index', :add_success => @news.title
         else
-                render 'new'
+            render 'new'
         end
     end
 

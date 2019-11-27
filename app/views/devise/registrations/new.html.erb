@@ -49,7 +49,7 @@
         </div>
         <div class="field">
           <%= f.label :Cuenta_Premium %><br />
-          <%= f.check_box(:membership_premium, {:class => 'form-control'}, true, false)  %>
+          <%= f.check_box(:membership_premium, {:class => 'form-control',  :checked => true,:unchecked => false })  %>
         </div>
         <%= f.hidden_field(:current_profiles, :value => 0) %>
         <div class="actions my-3">

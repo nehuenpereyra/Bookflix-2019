@@ -21,3 +21,15 @@ rails active_storage:install
 
 Utiles para cuando hay problemas con migraciones
 rake db:drop db:create db:migrate
+
+#Listar las apps
+heroku apps
+#Crea una app
+heroku create
+#Setea el repositorio remoto de la app
+heroku git:remote -a damp-savannah-92740
+#Sube lo que hay en master
+git push heroku master
+#Ejecuta las migraciones
+heroku run rake db:migrate
+heroku run rake db:seed

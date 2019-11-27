@@ -10,7 +10,8 @@ class Book < ApplicationRecord
     belongs_to :editorial
 
     validates :title, length: { minimum: 5 }
-    validates :title, uniqueness: true
+    validates :title, :uniqueness => {:case_sensitive => false}
+    validates :title, presence: true, allow_blank: false
     
     
     validates :url_cover, length: { minimum: 5 }
@@ -29,7 +30,7 @@ class Book < ApplicationRecord
         end
     end
     def date_validation
-      self.errors.add(:expiration_date, "no esta en rango.") unless ((Time.now)..(3.years.from_now)).include?(self.expiration_date)
+      self.errors.add(:expiration_date, "no esta en rango.") unless ((Date.today)..(3.years.from_now)).include?(self.expiration_date)
     end
     
 end

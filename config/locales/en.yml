@@ -36,6 +36,14 @@ en:
     email: Correo
     normal_release_date: Fecha de lanzamiento normal
     premium_release_date: Fecha de lanzamiento premium
+    subscriber: Suscriptor
+    membership_premium: Membresia premium
+    current_profiles: Perfiles actuales
+    card_key: Clave de tarjeta
+    card_number: Numero de tarjeta
+    last_name: Apellido
+    title: Titulo
+    content: Contenido
 
   activerecord:
     errors:
