@@ -8,7 +8,6 @@ class Administrator < ApplicationRecord
   validates :email, length: { minimum: 5 }, presence: true, format: {with:VALID_EMAIL_REGEX}
   
   #validates :current_password, length: { minimum: 6, maximum: 12 }
-  
   #validates :password, length: { minimum: 6, maximum: 12 }
   #validates :password_confirmation, length: { minimum: 6, maximum: 12 }
 

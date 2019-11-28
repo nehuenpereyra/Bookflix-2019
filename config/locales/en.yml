@@ -44,6 +44,8 @@ en:
     last_name: Apellido
     title: Titulo
     content: Contenido
+    current_password: Contraseña actual
+    password_confirmation: Contraseña de confirmacion
 
   activerecord:
     errors:
