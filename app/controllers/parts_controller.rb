@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
 
-    before_action :authenticate_administrator!, except: [:show], if: :subscriber_signed_in?
+    before_action :authenticate_administrator!, except: [:show, :reading_part,:unreading_part], if: :subscriber_signed_in?
     before_action :authenticate_scope!
 
     def new
@@ -23,6 +23,7 @@ class PartsController < ApplicationController
 
     def show
         @part = Part.find(params[:id])
+        @reading = Reading.find_by(part_id: params[:id])
     end
 
     def index
@@ -52,8 +53,24 @@ class PartsController < ApplicationController
         redirect_to :controller => 'books', :action => 'show', :id => params[:book_id], :removed_part => @part.position
     end
 
+    def reading_part
+        reading = Reading.new(state:'READ',part_id:params[:id].to_i,profile_id:cookies[:current_profile_id].to_i)
+        if reading.save
+            part = reading.part
+            redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
+        else
+            redirect_to root_path
+        end
+    end
+
+    def unreading_part
+        reading = Reading.find_by(part_id:params[:id]) 
+        reading.destroy
+        redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
+    end
+
     private
     def part_params
-        params.require(:part).permit(:document, :position, :normal_release_date, :premium_release_date, :book_id, :url_document)
+        params.require(:part).permit(:document, :position, :normal_release_date, :premium_release_date, :book_id, :url_document,:id)
     end
 end

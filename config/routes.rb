@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   get '/subscribers/edit_pass' => 'subscribers#edit_pass'
   patch '/subscribers/edit_pass' => 'subscribers#update_pass'
   
+  post "/parts/:id/reading_part" => "parts#reading_part"
+  delete "/parts/:id/unreading_part" => "parts#unreading_part"
+
 end

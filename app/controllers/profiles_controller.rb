@@ -24,6 +24,9 @@ class ProfilesController < ApplicationController
         if @profile == nil
             redirect_to :controller => 'home', :action => 'index'
         end
+        @book_unreading = book_unreading()
+        @book_reading = book_reading()
+        @book_finish = book_finish()
     end
 
     def index
@@ -74,5 +77,23 @@ class ProfilesController < ApplicationController
     private
     def profile_params
         params.require(:profile).permit(:name, :url_image, :age_restriction, :subscriber_id)
+    end
+
+    def book_unreading
+        books = Book.all
+        readings = Reading.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i }
+        return books.select { |book| !book.parts.any? { |part| readings.any?{ |reading| reading.part_id == part.id} } }
+    end
+
+    def book_reading
+        books = Book.all
+        readings = Reading.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i }
+        return books.select { |book| book.parts.any? { |part| readings.any?{ |reading| reading.part_id == part.id} } && book.parts.size != readings.count{ |r| book.parts.any?{|i| i.id == r.part_id}  } }
+    end
+
+    def book_finish
+        books = Book.all
+        readings = Reading.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i }
+        return books.select { |book| book.parts.any? { |part| readings.any?{ |reading| reading.part_id == part.id} } && book.parts.size == readings.count{ |r| book.parts.any?{|i| i.id == r.part_id}  } }
     end
 end

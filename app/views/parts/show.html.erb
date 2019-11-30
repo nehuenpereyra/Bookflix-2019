@@ -34,4 +34,15 @@
   </table>
 <% end %>
 <embed src=<%=  @part.url_document+'#toolbar=0' %> type="application/pdf" width="100%" height="1000" style="margin:10px;">
+<div class="d-flex justify-content-center align-items-center">
+  <% if @reading == nil %>
+    <%= form_for Reading.new, url: '/parts/'+@part.id.to_s+'/reading_part' do |f|%>
+      <%= f.hidden_field(:id, :value => @part.id ) %>
+      <%= f.submit('Parte Leida',{:class => 'btn btn-danger'}) %>
+    <%end%>
+  <%else%>
+    <h4 style="margin:10px">Parte Leida</h4>
+    <%= link_to 'x', '/parts/'+@part.id.to_s+'/unreading_part', :id => @part.id.to_s, method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => 'btn btn-danger'%>
+  <% end %>
+</div>
 <%= link_to 'Regresar', url_for(:back) %>

@@ -31,6 +31,7 @@ class BooksController < ApplicationController
     def show
         @book = Book.find(params[:id])
         @reviews = Review.all
+        @book_finish = book_finish(@book)
     end
 
     def index
@@ -67,6 +68,11 @@ class BooksController < ApplicationController
     private
     def book_params
         params.require(:book).permit(:title, :description, :expiration_date, :url_cover, :author_id, :editorial_id, :genre_id, :tag_ids => [])
+    end
+
+    def book_finish(book)
+        readings = Reading.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i }
+        return book.parts.any? { |part| readings.any?{ |reading| reading.part_id == part.id} } && book.parts.size == readings.count{ |r| book.parts.any?{|i| i.id == r.part_id}  }
     end
     
 end

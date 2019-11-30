@@ -83,7 +83,7 @@
     </li>
   <% end %>
 </ul>
-<% if !administrator_signed_in?%>
+<% if !administrator_signed_in? && @book_finish%>
   <%= link_to 'Agregar Reseña', new_review_path(id: @book.id), :class => "btn btn-warning", :style => "margin-top:10px" %>
 <% end %>
 <%= render :template => 'reviews/index', :collection => @book %>
