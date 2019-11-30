@@ -1,7 +1,8 @@
 class NewsController < ApplicationController
     
-    before_action :authenticate_administrator!, except: [:index] || :authenticate_subscriber!
-
+    before_action :authenticate_administrator!, except: [:index], if: :subscriber_signed_in?
+    before_action :authenticate_scope!
+    
     def new
         @news = News.new
     end

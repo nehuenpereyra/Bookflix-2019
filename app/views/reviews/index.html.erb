@@ -1,0 +1,37 @@
+<div class="row bootstrap snippets">
+  <div class="col-md-6 col-md-offset-2 col-sm-12">
+    <div class="comment-wrapper">
+      <div class="panel panel-info">
+        <div class="panel-body" >
+          <ul class="media-list">
+            <% @reviews.select { |elemnt| elemnt.book.id == @book.id }.each do |review| %>
+              <li class="media" style="border-bottom:1px dashed #efefef;margin-bottom:25px;margin-top:20px;">
+                <a href="#" class="pull-left">
+                  <img src=<%= review.profile.url_image %> alt="" class="img-circle" style="width:64px;height:64px;margin:10px;border-radius:50%;border-width: 2px;border-style: solid;border-color: #c2212b;">
+                </a>
+                <div class="media-body">
+                  <strong style="color:#c2212b"><%= review.profile.name %></strong>
+                  <span class="text-muted pull-right">
+                    <small class="text-muted"><%= review.updated_at.strftime("%I:%M%p %m/%d/%Y")  %></small>
+                  </span>
+                  <% if review.profile.id == cookies[:current_profile_id].to_i %>
+                    <%= link_to 'editar', edit_review_path(review), {:style=>'color: inherit;'} %>
+                    <%= link_to 'borrar', review_path(review), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+                  <% end %>
+                  <% if review.spoiler != true || review.profile.id == cookies[:current_profile_id].to_i || params[:spoiler].to_i == review.id %>
+                    <p><%= review.text %></p>
+                  <% else %>
+                    <div class="row text-center" style="margin:5px;align-content: center;">
+                      <p style="text-align: center;">Posee spoiler</p>
+                      <%= link_to 'Ver Reseña', book_path(:id => review.book.id, :spoiler => review.id), {:class => "btn btn-danger", :style=>"margin-left:10px;"} %>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

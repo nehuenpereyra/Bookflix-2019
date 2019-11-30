@@ -37,6 +37,19 @@ class AdminpanelController < ApplicationController
     def admin_panel
     end
 
+    def edit_pass
+        @admin = current_administrator
+    end
+
+    def update_pass
+        @admin = Administrator.find(current_administrator.id)
+        if @admin.update_attributes(administrator_params)
+            redirect_to administrator_session_path
+        else
+            render 'edit_pass'
+        end
+    end
+
     private
     def administrator_params
         params.require(:administrator).permit(:email, :password, :password_confirmation,:id, :privileges)

@@ -10,6 +10,8 @@ rails g controller books
 Generar un modelo
 rails g model Book title:string autor:string
 
+rake db:migrate
+
 Cargar datos de prueba permanentes en la base de datos
 -> En el archivo /db/seed.rb
 Comando para ejecutarlo

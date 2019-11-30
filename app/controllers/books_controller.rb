@@ -1,7 +1,9 @@
 class BooksController < ApplicationController
-    
-    before_action :authenticate_administrator!, except: [:index, :show] || :authenticate_subscriber!
-    
+
+    before_action :authenticate_administrator!, except: [:show, :index], if: :subscriber_signed_in?
+    before_action :authenticate_scope!
+
+
     def new
         @book = Book.new
         @genres = Genre.all
@@ -28,6 +30,7 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.find(params[:id])
+        @reviews = Review.all
     end
 
     def index

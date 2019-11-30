@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
 
-    before_action :authenticate_administrator! , except: [:show] || :authenticate_subscriber!
+    before_action :authenticate_administrator!, except: [:show], if: :subscriber_signed_in?
+    before_action :authenticate_scope!
     
 
     def new

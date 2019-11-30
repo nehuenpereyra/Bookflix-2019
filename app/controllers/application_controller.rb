@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :check_current_profile_exists
     helper_method :current_profile
+    helper_method :authenticate_scope!
 
     protected
   
@@ -26,7 +27,14 @@ class ApplicationController < ActionController::Base
         #redirect_to profiles_path
       end
     end
+
     def	current_profile
       Profile.find_by(id: cookies[:current_profile_id])
     end
+
+    def authenticate_scope!
+      if !administrator_signed_in? && !subscriber_signed_in?
+          send(:"authenticate_subscriber!")
+      end
+  end
 end

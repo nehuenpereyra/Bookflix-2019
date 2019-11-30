@@ -46,6 +46,7 @@ en:
     content: Contenido
     current_password: Contraseña actual
     password_confirmation: Contraseña de confirmacion
+    profile: Perfil
 
   activerecord:
     errors:

@@ -10,6 +10,11 @@
     </div>
   <%end%>
 <%end%>
+<% if params['removed_review']!=nil%>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se a borrado exitosamente la reseña.
+  </div>
+<%end%>
 <div class="card mb-3" style="margin-top: 20px;" >
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -78,4 +83,8 @@
     </li>
   <% end %>
 </ul>
+<% if !administrator_signed_in?%>
+  <%= link_to 'Agregar Reseña', new_review_path(id: @book.id), :class => "btn btn-warning", :style => "margin-top:10px" %>
+<% end %>
+<%= render :template => 'reviews/index', :collection => @book %>
 <%= link_to 'Regresar', url_for(:back) %>

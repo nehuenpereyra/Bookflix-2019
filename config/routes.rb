@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :profiles
   resources :news
+  resources :reviews
 
   get '/admin_panel', to: 'adminpanel#admin_panel'
   get "/admin_panel/create_admin" => "adminpanel#new_admin"
@@ -23,12 +24,15 @@ Rails.application.routes.draw do
   get "/admin_panel/show_admin" => "adminpanel#show_admin"  
   get "/admin_panel/index_admin" => "adminpanel#index_admin" 
   delete "/admin_panel/index_admin" => "adminpanel#destroy"  
-
+  get '/admin_panel/edit_pass' => 'adminpanel#edit_pass'
+  patch '/admin_panel/edit_pass' => 'adminpanel#update_pass'
 
   get '/preguntas_frecuentes', to: 'informations#pregunta'
   get '/contacto', to: 'informations#contacto'
   get '/condicion', to: 'informations#condicion'
   get 'news/news_home' => 'news#news_home'
   
+  get '/subscribers/edit_pass' => 'subscribers#edit_pass'
+  patch '/subscribers/edit_pass' => 'subscribers#update_pass'
   
 end
