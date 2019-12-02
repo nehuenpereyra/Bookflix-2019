@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
     def show
         user = Subscriber.find(current_subscriber.id)
         @profile = user.profiles.find_by_id(params[:id])
-        if @profile == nil
+        if @profile == nil || @profile.id != cookies[:current_profile_id].to_i
             redirect_to :controller => 'home', :action => 'index'
         end
         @book_unreading = book_unreading()
@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
         #@profile = Profile.find(params[:id])
         user = Subscriber.find(current_subscriber.id)
         @profile = user.profiles.find_by_id(params[:id])
-        if @profile == nil
+        if @profile == nil || @profile.id != cookies[:current_profile_id].to_i
             redirect_to :controller => 'home', :action => 'index'
         end
     end
@@ -61,7 +61,7 @@ class ProfilesController < ApplicationController
         #@profile = Profile.find(params[:id])
         user = Subscriber.find(current_subscriber.id)
         @profile = user.profiles.find_by_id(params[:id])
-        if @profile == nil
+        if @profile == nil || @profile.id != cookies[:current_profile_id].to_i
             redirect_to :controller => 'home', :action => 'index'
         end
 

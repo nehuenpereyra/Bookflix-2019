@@ -2,7 +2,43 @@
   <div style="margin:20px">
     <%= render :template => 'news/news_home', :collection => @noticias%>
   </div>
-  <%= render :template => 'books/index', :collection => @books%>
+  <% if @books_suggested.size != 0%>
+    <p>
+      <h4>Libros recomendados</h4>
+      <div class="card-columns" style="margin-top:10px">
+        <% @books_suggested.each do |book| %>
+          <% if book.visibility %>
+            <div class="card align-items-center text-center" style="border: none;" >
+              <img src=<%=book.url_cover%> class="card-img-top" alt=<%=book.title%> style="width:200px; height:300;overflow: hidden;">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= link_to book.title, book_path(book), {:style=>'color: inherit;'}%>
+                </h5>
+                <p class="card-text"><%= book.autor %></p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <% if administrator_signed_in? %>
+                    <button type="button" class="btn btn-dark">
+                      <%= link_to 'Ver', book_path(book), {:style=>'color: inherit;'}%>
+                    </button>
+                    <button type="button" class="btn btn-dark">
+                      <%= link_to 'Editar', edit_book_path(book), {:style=>'color: inherit;'} %>
+                    </button>
+                    <button type="button" class="btn btn-dark">
+                      <%= link_to 'Borrar', book_path(book), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+                    </button>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </p>
+  <%end%>
+  <p>
+    <h4>Todos los libros</h4>
+    <%= render :template => 'books/index', :collection => @books%>
+  </p>
 <% else %>
   <div class="text-center">
     <h3>Bienvenido a Bookflix!</h3>

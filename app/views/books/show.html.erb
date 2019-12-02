@@ -73,12 +73,16 @@
     <li class="list-group-item">
       <div style="justify-content:space-between;" class="row">
         <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Parte: <%= part.position%></a>
-        <% if administrator_signed_in? %>
-          <div>
+        <div>
+          <% lecturas = Reading.all.select{ |element| element.profile_id == cookies[:current_profile_id].to_i }%>
+          <% if lecturas.any?{ |e| e.part_id == part.id} %>
+            ✅
+          <%end%>
+          <% if administrator_signed_in? %>
             <%= link_to 'Editar', edit_part_path(part), :class => "btn btn-warning" %>
             <%= link_to 'Borrar', part_path(part,:book_id => @book.id), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => "btn btn-warning" %>
-          </div>
-        <%end%>
+          <%end%>
+        </div>
       </div>
     </li>
   <% end %>

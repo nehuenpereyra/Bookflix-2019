@@ -159,10 +159,16 @@ Part.find_or_create_by(book_id:1,
     premium_release_date:"2020-11-26")
 
 Part.find_or_create_by(book_id:2,
-    url_document:"http://web.seducoahuila.gob.mx/biblioweb/upload/J.R.R.%20Tolkien%20La%20Comunidad%20del%20anillo%20I.pdf",
+    url_document:"https://juancrazyheart.files.wordpress.com/2014/12/1-juego-de-tronos.pdf",
     position:0,
     normal_release_date:"2020-11-25",
     premium_release_date:"2020-11-26")
+
+Part.find_or_create_by(book_id:3,
+        url_document:"https://juancrazyheart.files.wordpress.com/2014/12/1-juego-de-tronos.pdf",
+        position:0,
+        normal_release_date:"2020-11-25",
+        premium_release_date:"2020-11-26")
 
 
 

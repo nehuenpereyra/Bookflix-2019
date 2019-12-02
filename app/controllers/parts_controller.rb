@@ -54,19 +54,23 @@ class PartsController < ApplicationController
     end
 
     def reading_part
-        reading = Reading.new(state:'READ',part_id:params[:id].to_i,profile_id:cookies[:current_profile_id].to_i)
-        if reading.save
-            part = reading.part
-            redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
-        else
-            redirect_to root_path
+        if cookies[:current_profile_id] != nil
+            reading = Reading.new(state:'READ',part_id:params[:id].to_i,profile_id:cookies[:current_profile_id].to_i)
+            if reading.save
+                part = reading.part
+                redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
+            else
+                redirect_to root_path
+            end
         end
     end
 
     def unreading_part
-        reading = Reading.find_by(part_id:params[:id]) 
-        reading.destroy
-        redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
+        if cookies[:current_profile_id] != nil
+            reading = Reading.find_by(part_id:params[:id]) 
+            reading.destroy
+            redirect_to :controller => 'parts', :action => 'show', :id => params[:id]
+        end
     end
 
     private

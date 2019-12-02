@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   
   post "/parts/:id/reading_part" => "parts#reading_part"
   delete "/parts/:id/unreading_part" => "parts#unreading_part"
-
+  
 end
