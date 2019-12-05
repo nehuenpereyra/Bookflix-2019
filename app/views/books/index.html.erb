@@ -12,6 +12,11 @@
   <h1>Listado de Libros</h1>
   <%= link_to 'Agregar libro', new_book_path %>
 <% end %>
+<% if @no_found!=nil%>
+  <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+    No se encontro el libro: <%=params[:search]%>.
+  </div>
+<%end%>
 <div class="card-columns" style="margin-top:10px">
   <% @books.each do |book| %>
     <% if book.visibility %>

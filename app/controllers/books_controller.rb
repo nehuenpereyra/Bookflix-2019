@@ -41,7 +41,10 @@ class BooksController < ApplicationController
     def index
         @books = Book.all
         if params[:search].present?
-            @books=@books.where("title like ?", "%#{params[:search]}%")
+            @books=@books.where("lower(title) like ?", "%#{params[:search].downcase}%")
+            if @books.size == 0
+                @no_found = true
+            end
          end
     end
 

@@ -63,16 +63,13 @@ class ProfilesController < ApplicationController
         #@profile = Profile.find(params[:id])
         user = Subscriber.find(current_subscriber.id)
         @profile = user.profiles.find_by_id(params[:id])
-        if @profile == nil || @profile.id != cookies[:current_profile_id].to_i
-            redirect_to :controller => 'home', :action => 'index'
-        end
+        #if @profile == nil || @profile.id != cookies[:current_profile_id].to_i
+        #    redirect_to :controller => 'home', :action => 'index'
+        #end
 
-        title = @profile.name
         if @profile.destroy
             @profile.subscriber.update_attribute("current_profiles",@profile.subscriber.current_profiles-1)
-            redirect_to profiles_path(removed: title)
-        else
-            redirect_to profiles_path(error_removed: title)
+            redirect_to profiles_path(removed:  @profile.name)
         end
     end
 
