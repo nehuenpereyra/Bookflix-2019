@@ -6,14 +6,14 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com"}) %>
+          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com", :required => true}) %>
         </div>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
         <div class="field">
           <%= f.label :Contraseña_actual %>
-          <%= f.password_field(:current_password, {:class => 'form-control',autocomplete: "current-password"}) %>
+          <%= f.password_field(:current_password, {:class => 'form-control',autocomplete: "current-password", :required => true}) %>
         </div>
         <small id="passwordHelpBlock" class="form-text text-muted">
           Necesitamos su contraseña actual para confirmar sus cambios.

@@ -35,6 +35,7 @@ class BooksController < ApplicationController
 
         if cookies[:current_profile_id] != nil
             @favorite = Favorite.find_by(book_id: params[:id],profile_id:cookies[:current_profile_id])
+            @review_profile = Review.find_by(book_id: params[:id],profile_id:cookies[:current_profile_id])
         end 
     end
 

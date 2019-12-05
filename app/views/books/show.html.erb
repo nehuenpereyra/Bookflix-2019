@@ -24,7 +24,6 @@
       <div class="card-body">
         <div class="row" style="justify-content:space-between;margin:5px;">
           <h5 class="card-title"><%= @book.title %></h5>
-
           <% if (@book.trailer!=nil) %>
             <div>
               <a class="btn btn-warning" href=<%= request.protocol+request.host_with_port+'/trailers/'+@book.trailer.id.to_s %>>Trailer</a>
@@ -60,30 +59,20 @@
         </div>
         <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date %></footer>
       </div>
-
-
-
-
-
       <div class="row align-items-center" style="margin:30px;">
         <div>
-        <% if !administrator_signed_in?%>
-          <% if @favorite == nil %>
-            <%= form_for Favorite.new, url: '/books/'+@book.id.to_s+'/favorite_book' do |f|%>
-              <%= f.hidden_field(:id, :value => @book.id ) %>
-              <%= f.submit('Agregar a Favoritos',{:class => 'btn btn-outline-warning'}) %>
-            <%end%>
-          <%else%>
-            <%= link_to 'Eliminar de Favoritos', '/books/'+@book.id.to_s+'/unfavorite_book', :id => @book.id.to_s, method: :delete, data: {confirm: 'Seguro que que desea eliminar el libro de Favoritos?'},:class => 'btn btn-danger'%>
+          <% if !administrator_signed_in?%>
+            <% if @favorite == nil %>
+              <%= form_for Favorite.new, url: '/books/'+@book.id.to_s+'/favorite_book' do |f|%>
+                <%= f.hidden_field(:id, :value => @book.id ) %>
+                <%= f.submit('Agregar a Favoritos',{:class => 'btn btn-outline-warning'}) %>
+              <%end%>
+            <%else%>
+              <%= link_to 'Eliminar de Favoritos', '/books/'+@book.id.to_s+'/unfavorite_book', :id => @book.id.to_s, method: :delete, data: {confirm: 'Seguro que que desea eliminar el libro de Favoritos?'},:class => 'btn btn-danger'%>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
-
-
-
-        
-
     </div>
   </div>
 </div>
@@ -112,7 +101,7 @@
     </li>
   <% end %>
 </ul>
-<% if !administrator_signed_in? && @book_finish%>
+<% if !administrator_signed_in? && @book_finish && @review_profile==nil %>
   <%= link_to 'Agregar Reseña', new_review_path(id: @book.id), :class => "btn btn-warning", :style => "margin-top:10px" %>
 <% end %>
 <%= render :template => 'reviews/index', :collection => @book %>

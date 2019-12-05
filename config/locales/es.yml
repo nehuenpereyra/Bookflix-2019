@@ -32,9 +32,15 @@
 en:
   activerecord:
     models:
-      profile:
-        one: "Perfil"
-        other: "Perfiles"
+      book:
+        one: "Libro"
+        other: "Libros"
+      subscriber:
+        one: "Suscriptor"
+        other: "Suscriptores"
+      administrator:
+        one: "Administrador"
+        other: "Administradores"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
@@ -59,6 +65,14 @@ en:
     current_password: Contraseña actual
     password_confirmation: Contraseña de confirmacion
     profile_id: Perfil
+    book_id: Libro
+    part_id: Parte
+    position: Posición
+    genre_id: Género
+    editorial_id: Editorial
+    author_id: Autor
+    tag_id: Etiqueta
+    subscriber_id: Suscriptor
 
   date:
     abbr_day_names:

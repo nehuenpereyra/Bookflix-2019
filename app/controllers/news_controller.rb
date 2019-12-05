@@ -29,7 +29,7 @@ class NewsController < ApplicationController
 
 
     def news_home
-        @noticias = News.limit(3)    
+        @noticias = News.limit(3)  
     end
     
 

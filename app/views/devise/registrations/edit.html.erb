@@ -10,7 +10,7 @@
         <%= f.text_field(:last_name, {:class => 'form-control', :placeholder => "Apellido", :autofocus => true, required: true}) %>
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com"}) %>
+          <%= f.email_field(:email, {:class => 'form-control', :placeholder => "email@bookflix.com",:required => true}) %>
         </div>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -26,18 +26,18 @@
         </div>
         <div class="field">
           <%= f.label :Codigo_de_verificacion %><br />
-          <%= f.number_field(:card_key, {:class => 'form-control', :placeholder => "CVC"}) %>
+          <%= f.number_field(:card_key, {:class => 'form-control', :placeholder => "CVC", :required => true}) %>
         </div>
         <div class="field">
           <%= f.label :Contraseña_actual %>
-          <%= f.password_field(:current_password, {:class => 'form-control',autocomplete: "current-password"}) %>
+          <%= f.password_field(:current_password, {:class => 'form-control',autocomplete: "current-password", :required => true}) %>
         </div>
         <small id="passwordHelpBlock" class="form-text text-muted">
           Necesitamos su contraseña actual para confirmar sus cambios.
         </small>
         <div class="field">
           <%= f.label :Cuenta_Premium %><br />
-          <%= f.check_box(:membership_premium, {:class => 'form-control'}, true, false)  %>
+          <%= f.check_box(:membership_premium, {:class => 'form-control'},:checked => true,:unchecked => false)  %>
         </div>
         <div class="actions my-3">
           <%= f.submit('Actualizar datos',{:class => 'btn btn-primary btn-block' }) %>
