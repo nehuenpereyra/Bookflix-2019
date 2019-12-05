@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-    before_action :authenticate_administrator!, except: [:show, :index], if: :subscriber_signed_in?
+    before_action :authenticate_administrator!, except: [:show, :index, :favorite_book,:unfavorite_book], if: :subscriber_signed_in?
     before_action :authenticate_scope!
 
 
@@ -32,6 +32,14 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id])
         @reviews = Review.all
         @book_finish = book_finish(@book)
+
+        #@favorite = Favorite.find_by(book_id: params[:id])
+        if cookies[:current_profile_id] != nil
+            @favorite = Favorite.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i && element.book_id == params[:id] } 
+        end
+
+        
+        
     end
 
     def index
@@ -64,6 +72,34 @@ class BooksController < ApplicationController
         @book.update_attribute(:visibility,false)
         redirect_to books_path(removed: title)
     end
+
+
+
+
+
+    def favorite_book
+        if cookies[:current_profile_id] != nil
+            favorite = Favorite.new(ok:true,book_id:params[:id].to_i,profile_id:cookies[:current_profile_id].to_i)
+            if favorite.save
+                book = favorite.book
+                redirect_to :controller => 'books', :action => 'show', :id => params[:id]
+            else
+                redirect_to root_path
+            end
+        end
+    end
+
+    def unfavorite_book
+        if cookies[:current_profile_id] != nil
+            favorite = Favorite.find_by(book_id:params[:id]) 
+            favorite.destroy
+            redirect_to :controller => 'books', :action => 'show', :id => params[:id]
+        end
+    end
+
+
+
+
 
     private
     def book_params

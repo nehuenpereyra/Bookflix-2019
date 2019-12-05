@@ -27,6 +27,8 @@ class ProfilesController < ApplicationController
         @book_unreading = book_unreading()
         @book_reading = book_reading()
         @book_finish = book_finish()
+
+        @book_fav = book_favorite()
     end
 
     def index
@@ -96,4 +98,13 @@ class ProfilesController < ApplicationController
         readings = Reading.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i }
         return books.select { |book| book.parts.any? { |part| readings.any?{ |reading| reading.part_id == part.id} } && book.parts.size == readings.count{ |r| book.parts.any?{|i| i.id == r.part_id}  } }
     end
+
+
+
+
+    def book_favorite
+        favorito = Favorite.select { |favorite| favorite.profile_id == cookies[:current_profile_id].to_i }
+        return Book.all.select{|book| favorito.any? {|fav| fav.book_id==book.id} }
+    end
+
 end
