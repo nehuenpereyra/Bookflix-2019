@@ -33,13 +33,9 @@ class BooksController < ApplicationController
         @reviews = Review.all
         @book_finish = book_finish(@book)
 
-        #@favorite = Favorite.find_by(book_id: params[:id])
         if cookies[:current_profile_id] != nil
-            @favorite = Favorite.all.select { |element| element.profile_id == cookies[:current_profile_id].to_i && element.book_id == params[:id] } 
-        end
-
-        
-        
+            @favorite = Favorite.find_by(book_id: params[:id],profile_id:cookies[:current_profile_id])
+        end 
     end
 
     def index
