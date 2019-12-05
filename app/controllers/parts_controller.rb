@@ -23,7 +23,9 @@ class PartsController < ApplicationController
 
     def show
         @part = Part.find(params[:id])
-        @reading = Reading.find_by(part_id: params[:id])
+        if cookies[:current_profile_id] != nil
+            @reading = Reading.find_by(part_id: params[:id],profile_id:cookies[:current_profile_id])
+        end
     end
 
     def index
