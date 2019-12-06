@@ -57,7 +57,7 @@
             <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/tags/'+tag.id.to_s %> role="button" style="margin-left:10px;"><%= tag.title%></a>
           <% end %>
         </div>
-        <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date %></footer>
+        <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date.strftime("%d/%m/%Y") %></footer>
       </div>
       <div class="row align-items-center" style="margin:30px;">
         <div>

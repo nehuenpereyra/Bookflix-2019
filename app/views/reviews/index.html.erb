@@ -12,7 +12,7 @@
                 <div class="media-body">
                   <strong style="color:#c2212b"><%= review.profile.name %></strong>
                   <span class="text-muted pull-right">
-                    <small class="text-muted"><%= review.updated_at.strftime("%I:%M%p %m/%d/%Y")  %></small>
+                    <small class="text-muted"><%= review.updated_at.strftime("%I:%M%p %d/%m/%Y")  %></small>
                   </span>
                   <% if review.profile.id == cookies[:current_profile_id].to_i %>
                     <%= link_to 'editar', edit_review_path(review), {:style=>'color: inherit;'} %>
