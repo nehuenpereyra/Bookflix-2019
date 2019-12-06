@@ -73,6 +73,17 @@ es:
     author_id: Autor
     tag_id: Etiqueta
     subscriber_id: Suscriptor
+    expiration_year_date: "Año de expiración de la tarjeta"
+    expiration_month_date: "Mes de expiración de la tarjeta"
+    text: Texto
+    current_profiles: "Cantidad de perfiles actuales"
+    premium_membership: Membresia Premium
+    description: Descripción
+    expiration_date: Fecha de expiración
+    url_document: Url del documento
+    age_restriction: Restricción de edad
+    state: Estado
+
 
   date:
     abbr_day_names:

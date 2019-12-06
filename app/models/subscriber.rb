@@ -22,7 +22,7 @@ class Subscriber < ApplicationRecord
          #validate :date_validation
          private 
          def date_validation
-           self.errors.add(:expiration_date, "no esta en rango."+ Time.zone.parse(self.expiration_date.to_s+'-01').to_s) unless ((Time.now)..(3.years.from_now)).include?(Time.zone.parse(self.expiration_date.to_s+'-01'))
+           self.errors.add(:expiration_date, "no esta en rango."+ Time.zone.parse(self.expiration_date.to_s+'-01').to_s) unless ((Time.now)..(20.years.from_now)).include?(Time.zone.parse(self.expiration_date.to_s+'-01'))
          end
 
 end
