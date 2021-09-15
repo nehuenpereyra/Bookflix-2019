@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="text-center" style="width:100%">
+      <h1>Iniciar Sesión como Administrador</h1>
+    </div>
+    <div class="offset-md-4 col-md-8">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="row">
+          <div class="col-6">
+            <div class="field">
+              <%= f.label :email %><br>
+              <%= f.email_field(:email, {:class => 'form-control', :placeholder => "Ingresar Email", :autofocus => true, :required => true}) %>
+            </div>
+            <div class="field">
+              <%= f.label :Contraseña %><br />
+              <%= f.password_field(:password, {:class => 'form-control', :autocomplete => 'current-password', :placeholder => "Contraseña", :required => true}) %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :Recordarme %>
+              </div>
+            <% end %>
+            <div class="actions my-3">
+              <%= f.submit('Iniciar sesion',{:class => 'btn btn-primary btn-block'}) %>
+            </div>
+          <% end %>
+          <%= render "administrators/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<%
+array_authors = 
+  [["George R. R. Martin","https://pixel.nymag.com/imgs/daily/vulture/2019/05/14/14-george-rr-martin.w330.h330.jpg"],
+  ["Suzanne Collins","https://www.alohacriticon.com/wp-content/uploads/2012/04/suzanne-collins-foto-biografia.jpg"],
+  ["J.R.R. Tolkien","https://pbs.twimg.com/profile_images/948851982793457665/VPgYi8gj_400x400.jpg"],
+  ["Stephen King","https://hips.hearstapps.com/esq.h-cdn.co/assets/15/32/1438875834-stephen-donald-1.jpg?crop=0.500xw:1.00xh;0,0&resize=768:*"]]
+%>
+<%=form_for @profile do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %></h2>
+      No se pudo guardar el perfil por:
+      <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field(:subscriber_id, :value => current_subscriber.id ) %>
+  <p>
+    <%= f.label(:name,"Nombre") %><br />
+    <%= f.text_field(:name, {:class => 'form-control', :required => true})%>
+  </p>
+  <p>
+    <%= f.label(:url_image,"Url de la imagen") %><br />
+    <% if @profile.url_image != nil%>
+      <% element = array_authors.select{|e| e[1] == @profile.url_image }%>
+      <%= f.select(:url_image, options_for_select(array_authors,element[0]),{:class => 'custom-select', :required => true} ) %>
+    <%else%>
+      <%= f.select(:url_image, options_for_select(array_authors),{:class => 'custom-select', :required => true} ) %>
+    <%end%>
+  </p>
+  <p>
+    <%= f.label(:age_restriction,"Posee restricción de edad") %><br />
+    <%= f.check_box(:age_restriction, {:class => 'form-control'}) %>
+  </p>
+  <%= f.submit('Cargar el perfil',{:class => 'btn btn-primary'}) %>
+</p>
+<% end %>

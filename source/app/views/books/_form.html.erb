@@ -1,0 +1,63 @@
+<%=form_for @book do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %></h2>
+      No se pudo guardar el libro por:
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :titulo %><br />
+    <%= f.text_field(:title, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    <%= f.label :autor %><br />
+    <% if @book.author != nil %>
+      <%= f.select(:author_id, options_for_select(@authors.map{ |author| [author.name,author.id] },selected: [@book.author.name,@book.author.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:author_id, options_for_select(@authors.map{ |author| [author.name,author.id] }), {:class => 'custom-select'}) %>
+    <%end%>
+  </p>
+  <p>
+    <%= f.label(:imagen,'Url portada') %><br />
+    <%= f.text_field(:url_cover, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    <%= f.label(:genre_id,"Género") %><br />
+    <% if @book.genre != nil %>
+      <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] },selected: [@book.genre.title,@book.genre.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:genre_id, options_for_select(@genres.map{ |genre| [genre.title,genre.id] }), {:class => 'custom-select'}) %>
+    <%end%>
+  </p>
+  <p>
+    <%= f.label(:description,"Descripción") %><br />
+    <%= f.text_area(:description, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    <%= f.label(:fecha_vencimiento,"Fecha de vencimiento") %><br />
+    <%= f.date_field(:expiration_date, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    <%= f.label :editorial %><br />
+    <% if @book.editorial != nil %>
+      <%= f.select(:editorial_id, options_for_select(@editorials.map{ |editorial| [editorial.name,editorial.id] },selected: [@book.editorial.name,@book.editorial.id]), {:class => 'custom-select'}) %>
+    <%else%>
+      <%= f.select(:editorial_id, options_for_select(@editorials.map{ |editorial| [editorial.name,editorial.id] }), {:class => 'custom-select'}) %>
+    <%end%>
+  </p>
+  <p>
+    <%= f.label(:tag_ids,"Etiquetas") %><br />
+    <div class="overflow-auto" style="width:400px;height:200px;">
+      <ul class="list-group">
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title, { include_hidden: false }) %>
+      </ul>
+    </div>
+  </p>
+  <%= f.submit('Cargar libro',{:class => 'btn btn-primary'}) %>
+</p>
+<% end %>

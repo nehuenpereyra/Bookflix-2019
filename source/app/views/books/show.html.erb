@@ -1,0 +1,108 @@
+<% if administrator_signed_in? %>
+  <% if params['removed_part']!=nil%>
+    <div class="alert alert-success" role="alert" style="margin-top:20px;">
+      Se a borrado exitosamente la parte: <%=params['removed_part']%>.
+    </div>
+  <%end%>
+  <% if params['removed_trailer']!=nil%>
+    <div class="alert alert-success" role="alert" style="margin-top:20px;">
+      Se a borrado exitosamente el trailer.
+    </div>
+  <%end%>
+<%end%>
+<% if params['removed_review']!=nil%>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se a borrado exitosamente la reseña.
+  </div>
+<%end%>
+<div class="card mb-3" style="margin-top: 20px;" >
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src=<%= @book.url_cover %> class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="row" style="justify-content:space-between;margin:5px;">
+          <h5 class="card-title"><%= @book.title %></h5>
+          <% if (@book.trailer!=nil) %>
+            <div>
+              <a class="btn btn-warning" href=<%= request.protocol+request.host_with_port+'/trailers/'+@book.trailer.id.to_s %>>Trailer</a>
+              <% if administrator_signed_in? %>
+                <%= link_to 'Editar', edit_trailer_path(@book.trailer), {:class => "btn btn-warning"}%>
+                <%= link_to 'Borrar', trailer_path(@book.trailer), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'}, :class => "btn btn-warning"%>
+              <%end%>
+            </div>
+          <% else %>
+            <% if administrator_signed_in? %>
+              <%= link_to 'Agregar trailer', new_trailer_path(:book_id => @book.id), {:class => "btn btn-warning"} %>
+            <%end%>
+          <%end%>
+        </div>
+        <p class="card-text"><%= @book.description %></p>
+        <div class="row align-items-center" style="margin:10px;">
+          <p class="card-text">Autor:</p>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/authors/'+@book.author.id.to_s %> role="button" style="margin-left:10px;"><%= @book.author.name%></a>
+        </div>
+        <div class="row align-items-center" style="margin:10px;">
+          <p class="card-text">Editorial:</p>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/editorials/'+@book.editorial.id.to_s %> role="button" style="margin-left:10px;"><%= @book.editorial.name%></a>
+        </div>
+        <div class="row align-items-center" style="margin:10px;">
+          <p class="card-text">Género:</p>
+          <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/genres/'+@book.genre.id.to_s %> role="button" style="margin-left:10px;"><%= @book.genre.title%></a>
+        </div>
+        <p class="card-text"><%= (@book.tags.length!=0)? "Etiquetas Relacionadas:": "" %></p>
+        <div >
+          <% @book.tags.each do |tag| %>
+            <a class="btn btn-danger" href=<%= request.protocol+request.host_with_port+'/tags/'+tag.id.to_s %> role="button" style="margin-left:10px;"><%= tag.title%></a>
+          <% end %>
+        </div>
+        <footer class="blockquote-footer" style="margin-top:10px">Fecha vencimiento <%= @book.expiration_date.strftime("%d/%m/%Y") %></footer>
+      </div>
+      <div class="row align-items-center" style="margin:30px;">
+        <div>
+          <% if !administrator_signed_in?%>
+            <% if @favorite == nil %>
+              <%= form_for Favorite.new, url: '/books/'+@book.id.to_s+'/favorite_book' do |f|%>
+                <%= f.hidden_field(:id, :value => @book.id ) %>
+                <%= f.submit('Agregar a Favoritos',{:class => 'btn btn-outline-warning'}) %>
+              <%end%>
+            <%else%>
+              <%= link_to 'Eliminar de Favoritos', '/books/'+@book.id.to_s+'/unfavorite_book', :id => @book.id.to_s, method: :delete, data: {confirm: 'Seguro que que desea eliminar el libro de Favoritos?'},:class => 'btn btn-danger'%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% if administrator_signed_in? %>
+  <%= link_to 'Agregar parte', new_part_path(:book_id => @book.id)   %>
+<%end%>
+<% if @book.parts.size > 0%>
+  <h5>Partes del libro:</h5>
+<% end %>
+<ul class="list-group">
+  <% @book.parts.each do |part| %>
+    <li class="list-group-item">
+      <div style="justify-content:space-between;" class="row">
+        <a href=<%= request.protocol+request.host_with_port+'/parts/'+part.id.to_s %>> Parte: <%= part.position%></a>
+        <div>
+          <% lecturas = Reading.all.select{ |element| element.profile_id == cookies[:current_profile_id].to_i }%>
+          <% if lecturas.any?{ |e| e.part_id == part.id} %>
+            ✅
+          <%end%>
+          <% if administrator_signed_in? %>
+            <%= link_to 'Editar', edit_part_path(part), :class => "btn btn-warning" %>
+            <%= link_to 'Borrar', part_path(part,:book_id => @book.id), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:class => "btn btn-warning" %>
+          <%end%>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<% if !administrator_signed_in? && @book_finish && @review_profile==nil %>
+  <%= link_to 'Agregar Reseña', new_review_path(id: @book.id), :class => "btn btn-warning", :style => "margin-top:10px" %>
+<% end %>
+<%= render :template => 'reviews/index', :collection => @book %>
+<%= link_to 'Regresar', url_for(:back) %>

@@ -1,0 +1,33 @@
+<% if administrator_signed_in? %>
+  <h1>Detalle del Trailer</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Libro: </th>
+        <td><%= @trailer.book.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">Url Documento: </th>
+        <td><%= @trailer.url_document %></td>
+      </tr>
+      <tr>
+        <th scope="row">Fecha de lanzamiento suscriptor normal: </th>
+        <td><%= @trailer.normal_release_date %></td>
+      </tr>
+      <tr>
+        <th scope="row">Fecha de lanzamiento suscriptor premium: </th>
+        <td><%= @trailer.premium_release_date %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+<embed src=<%=  @trailer.url_document+'#toolbar=0' %> type="application/pdf" width="100%" height="1000" style="margin:10px;">
+<%= link_to 'Regresar', url_for(:back) %>

@@ -1,0 +1,38 @@
+<% if params['removed']!=nil%>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se ha borrado exitósamente la etiqueta: <%=params['removed']%>
+  </div>
+<%end%>
+<% if params['error_removed']!=nil%>
+  <div class="alert alert-danger" role="alert" style="margin-top:20px;">
+    No se pudo eliminar la etiqueta: <%=params['error_removed']%>.
+  </div>
+<%end%>
+<h1>Listado de Etiquetas</h1>
+<%= link_to 'Agregar etiqueta', new_tag_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Etiqueta</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.title %></td>
+        <td>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Ver', tag_path(tag), {:style=>'color: inherit;'}%>
+          </button>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Editar', edit_tag_path(tag), {:style=>'color: inherit;'} %>
+          </button>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Borrar', tag_path(tag), method: :delete, data: {confirm: 'Seguro que quieres eliminarlo?'},:style=>'color: inherit;'%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

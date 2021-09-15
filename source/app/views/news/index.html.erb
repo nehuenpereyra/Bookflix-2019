@@ -1,0 +1,28 @@
+<% if params['add_success']!=nil && current_subscriber==nil %>
+  <div class="alert alert-success" role="alert" style="margin-top:20px;">
+    Se ha agregado exitósamente la noticia: <%=params['add_success']%>
+  </div>
+<%end%>
+<h1>Noticias</h1>
+<% if administrator_signed_in? %>
+  <%= link_to 'Agregar noticia', new_news_path %>
+<% end %>
+<div class="card-columns" style="margin-top:20px">
+  <% @news_index.each do |noticia| %>
+    <div class="card border-dark mb-3" style="width: 20rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%=noticia.title%></h5>
+        <p class= "card-text"><%=noticia.content%></p>
+        <p class="card-text"><small class="text-muted"><%=noticia.created_at.to_s(:custom_datetime)%></small></p>
+        <% if administrator_signed_in? %>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Editar', edit_news_path(noticia), {:style=>'color: inherit;'} %>
+          </button>
+          <button type="button" class="btn btn-dark">
+            <%= link_to 'Eliminar', news_path(noticia), method: :delete, data: {confirm: 'Seguro que quieres eliminar la noticia?'},:style=>'color: inherit;'%>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
